@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="JS使用内部引用：在 HTML 中，JavaScript 代码必须位于  与  标签之间。 外部引用：将.js文件通过src属性导入 1&amp;lt;script src=&amp;quot;/js/myScript1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  JS显示 window.alert() 写入警告框document.write() 写入 HTML 输出innerHTML 写入 HTM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/JavaScript基础/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JS使用内部引用：在 HTML 中，JavaScript 代码必须位于  与  标签之间。 外部引用：将.js文件通过src属性导入 1&amp;lt;script src=&amp;quot;/js/myScript1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  JS显示 window.alert() 写入警告框document.write() 写入 HTML 输出innerHTML 写入 HTM">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-15T07:43:23.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript基础">
+<meta name="twitter:description" content="JS使用内部引用：在 HTML 中，JavaScript 代码必须位于  与  标签之间。 外部引用：将.js文件通过src属性导入 1&amp;lt;script src=&amp;quot;/js/myScript1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  JS显示 window.alert() 写入警告框document.write() 写入 HTML 输出innerHTML 写入 HTM">
+  <link rel="canonical" href="http://yoursite.com/2019/08/15/JavaScript基础/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>JavaScript基础 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/JavaScript基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript基础
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-15 15:15:04 / Modified: 15:43:23" itemprop="dateCreated datePublished" datetime="2019-08-15T15:15:04+08:00">2019-08-15</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="JS使用"><a href="#JS使用" class="headerlink" title="JS使用"></a>JS使用</h2><p>内部引用：在 HTML 中，JavaScript 代码必须位于 <script> 与 </script> 标签之间。</p>
+<p>外部引用：将<strong>.js</strong>文件通过src属性导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;/js/myScript1.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS显示"><a href="#JS显示" class="headerlink" title="JS显示"></a>JS显示</h2><blockquote>
+<p>window.alert() 写入警告框<br>document.write() 写入 HTML 输出<br>innerHTML 写入 HTML 元素<br>console.log() 写入浏览器控制台</p>
+</blockquote>
+<h2 id="JS运算"><a href="#JS运算" class="headerlink" title="JS运算"></a>JS运算</h2><p>取幂运算符：x ** y 产生的结果与 Math.pow(x,y) 相同:</p>
+<h2 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h2><h3 id="Undefined与Null区别：Undefined-与-null-的值相等，但类型不相等："><a href="#Undefined与Null区别：Undefined-与-null-的值相等，但类型不相等：" class="headerlink" title="Undefined与Null区别：Undefined 与 null 的值相等，但类型不相等："></a>Undefined与Null区别：Undefined 与 null 的值相等，但类型不相等：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typeof undefined              // undefined</span><br><span class="line">typeof null                   // object</span><br><span class="line">null === undefined            // false</span><br><span class="line">null == undefined             // true</span><br></pre></td></tr></table></figure>
+
+<h3 id="typeof运算符"><a href="#typeof运算符" class="headerlink" title="typeof运算符"></a>typeof运算符</h3><p>对简单数据返回：</p>
+<blockquote>
+<ul>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>undefined</li>
+</ul>
+</blockquote>
+<p>对复杂数据返回：</p>
+<blockquote>
+<ul>
+<li>function</li>
+<li>object</li>
+</ul>
+</blockquote>
+<h2 id="JS事件"><a href="#JS事件" class="headerlink" title="JS事件"></a>JS事件</h2><table>
+<thead>
+<tr>
+<th align="center">事件</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">onchange</td>
+<td align="center">HTML 元素已被改变</td>
+</tr>
+<tr>
+<td align="center">onclick</td>
+<td align="center">用户点击了 HTML 元素</td>
+</tr>
+<tr>
+<td align="center">onmouseover</td>
+<td align="center">用户把鼠标移动到 HTML 元素上</td>
+</tr>
+<tr>
+<td align="center">onmouseout</td>
+<td align="center">用户把鼠标移开 HTML 元素</td>
+</tr>
+<tr>
+<td align="center">onkeydown</td>
+<td align="center">用户按下键盘按键</td>
+</tr>
+<tr>
+<td align="center">onload</td>
+<td align="center">浏览器已经完成页面加载</td>
+</tr>
+</tbody></table>
+<h2 id="JS字符串方法"><a href="#JS字符串方法" class="headerlink" title="JS字符串方法"></a>JS字符串方法</h2><p><strong>indexOf()</strong>方法返回字符串中指定文本首次出现的索引（位置）<br><strong>lastIndexOf()</strong>方法返回指定文本在字符串中最后一次出现的索引<br><strong>search()</strong>方法搜索特定值的字符串，并返回匹配的位置<br>区别：search() 方法无法设置第二个开始位置参数。indexOf() 方法无法设置更强大的搜索值（正则表达式）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">slice(start, end)                //提取字符串</span><br><span class="line">substring(start, end)            //无法接受负的索引  </span><br><span class="line">substr(start, length)            //类似于slice()  </span><br><span class="line">var text = &quot;Hello&quot;.concat(&quot; &quot;,&quot;World!&quot;);     //concat() 连接两个或多个字符串：  </span><br><span class="line">text.split(&quot;,&quot;);                 // 用逗号分隔,将字符串转换为数组</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS数字"><a href="#JS数字" class="headerlink" title="JS数字"></a>JS数字</h2><h3 id="NAN：指示某个数不是合法数。"><a href="#NAN：指示某个数不是合法数。" class="headerlink" title="NAN：指示某个数不是合法数。"></a>NAN：指示某个数不是合法数。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x = 100 / &quot;Apple&quot;;  // x 将是 NaN（Not a Number）</span><br><span class="line">var x = 100 / &quot;10&quot;;     // x 将是 10</span><br></pre></td></tr></table></figure>
+
+<p><strong>isNaN()</strong>确定某个值是否是数：</p>
+<h3 id="Infinity"><a href="#Infinity" class="headerlink" title="Infinity"></a>Infinity</h3><p>Infinity （或 -Infinity）是 JavaScript 在计算数时超出最大可能数范围时返回的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while (myNumber != Infinity) &#123;          // 执行直到 Infinity</span><br><span class="line">    myNumber = myNumber * myNumber;</span><br><span class="line">    myNumber.toString(8);               // 返回8进制的myNumber</span><br><span class="line">&#125;</span><br><span class="line">var x =  2 / 0;                         // x 将是 Infinity</span><br></pre></td></tr></table></figure>
+
+<h3 id="toExponential-方法"><a href="#toExponential-方法" class="headerlink" title="toExponential() 方法"></a>toExponential() 方法</h3><p>toExponential() 返回字符串值，包含已被四舍五入并使用指数计数法的数字，参数为小数点后的字符数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x = 9.656;</span><br><span class="line">x.toExponential(2);     // 返回 9.66e+0</span><br><span class="line">x.toExponential(4);     // 返回 9.6560e+0</span><br></pre></td></tr></table></figure>
+
+<h3 id="toFixed-方法"><a href="#toFixed-方法" class="headerlink" title="toFixed() 方法"></a>toFixed() 方法</h3><p>toFixed() 返回字符串值，指定小数的位数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x.toFixed(2);           // 返回 9.66</span><br><span class="line">x.toFixed(4);           // 返回 9.6560</span><br></pre></td></tr></table></figure>
+
+<h3 id="toPrecision-方法"><a href="#toPrecision-方法" class="headerlink" title="toPrecision() 方法"></a>toPrecision() 方法</h3><p>toPrecision() 返回字符串值，包含指定长度的数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.toPrecision(4);       // 返回 9.656</span><br></pre></td></tr></table></figure>
+
+<h2 id="JavaScript-数组方法"><a href="#JavaScript-数组方法" class="headerlink" title="JavaScript 数组方法"></a>JavaScript 数组方法</h2><p><strong>join() 方法</strong>：将所有数组元素结合为一个字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var fruits = [&quot;Banana&quot;, &quot;Orange&quot;,&quot;Apple&quot;, &quot;Mango&quot;];</span><br><span class="line">document.getElementById(&quot;demo&quot;).innerHTML = fruits.join(&quot; * &quot;);     //结果为Banana * Orange * Apple * Mango</span><br></pre></td></tr></table></figure>
+
+<p><strong>shift() 方法</strong>：删除数组的第一个元素（并将所有其他元素“移位”到左侧）<br><strong>unshift() 方法</strong>：将新元素添加到数组的开头<br><strong>splice() 方法</strong>：用于向数组添加新项：第一个参数（2）定义了应添加新元素的位置（拼接），第二个参数（0）定义应删除多少元素，其余参数（“Lemon”，“Kiwi”）定义要添加的新元素。<br>删除元素：第一个参数（0）定义新元素应该被添加（接入）的位置，第二个参数（1）定义应该删除多个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var fruits = [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;];</span><br><span class="line">fruits.splice(2, 0, &quot;Lemon&quot;, &quot;Kiwi&quot;);       //结果为Banana,Orange,Lemon,Kiwi,Apple,Mango</span><br><span class="line">fruits.splice(2, 2, &quot;Lemon&quot;, &quot;Kiwi&quot;);       //结果为Banana,Orange,Apple,Mango</span><br><span class="line">fruits.splice(0, 1);                        // 删除 fruits 中的第一个元素</span><br></pre></td></tr></table></figure>
+
+<p><strong>slice() 方法</strong>：用数组的某个片段切出新数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var fruits = [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Lemon&quot;, &quot;Apple&quot;, &quot;Mango&quot;];</span><br><span class="line">var citrus = fruits.slice(3);               //Apple,Mango</span><br><span class="line">var citrus = fruits.slice(1, 3);            //Orange,Lemon</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h3><p><strong>sort() 函数</strong>按照<strong>字符串</strong>顺序对值进行排序（”Apple” 会排在 “Banana” 之前； “25” 大于 “100”）</p>
+<h4 id="比值函数：定义一种排序顺序"><a href="#比值函数：定义一种排序顺序" class="headerlink" title="比值函数：定义一种排序顺序"></a>比值函数：定义一种排序顺序</h4><p>比较函数应该返回一个负，零或正值，这取决于参数：</p>
+<blockquote>
+<p>function(a, b){return a-b}</p>
+</blockquote>
+<p>当 sort() 函数比较两个值时，会将值发送到比较函数，并根据所返回的值（负、零或正值）对这些值进行排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">points.sort(function(a, b)&#123;return  a - b&#125;);     //function(40,100)，计算 40-100，然后返回 -60（负值）。排序函数将把 40 排序为比 100 更低的值。</span><br></pre></td></tr></table></figure>
+
+<p><strong>Math.max.apply([1, 2, 3])</strong> 等于 <strong>Math.max(1, 2, 3)</strong>，即查找数组中的最高值：<br><strong>Math.min.apply([1, 2, 3])</strong> 等于 <strong>Math.min(1, 2, 3)</strong>，即查找数组中的最高值：</p>
+<h3 id="数组迭代"><a href="#数组迭代" class="headerlink" title="数组迭代"></a>数组迭代</h3><p>Array.<strong>forEach()</strong>：为每个数组元素调用一次函数（回调函数）。<br>Array.<strong>map()</strong>：方法通过对每个数组元素执行函数来创建新数组。（不会对没有值的数组元素执行函数；不会更改原始数组）<br>Array.<strong>filter()</strong>：创建一个包含通过测试的数组元素的新数组。<br>Array.<strong>every()</strong>：检查所有数组值是否通过测试。<br>Array.<strong>some()</strong>：检查某些数组值是否通过了测试。（返回boolean）<br>Array.<strong>find()</strong>：返回通过测试函数的第一个数组元素的值。<br>Array.<strong>findIndex()</strong>：返回通过测试函数的第一个数组元素的索引。<br>——-function myFunction(value, index, array) {}<br>Array.<strong>reduce()</strong>：在每个数组元素上运行函数，以生成（减少它）单个值。<br>Array.<strong>reduceRight()</strong>方法在每个数组元素上运行函数，以生成（减少它）单个值。<br>——-function myFunction(total, value, index, array) {}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var txt = &quot;&quot;;</span><br><span class="line">var numbers = [45, 4, 9, 16, 25];</span><br><span class="line">var numbers1 = numbers.forEach(myFunction);</span><br><span class="line">var numbers2 = numbers.map(myFunction);</span><br><span class="line">var over18 = numbers.filter(myFunction);</span><br><span class="line"></span><br><span class="line">function myFunction(value) &#123;</span><br><span class="line">  txt = txt + value + &quot;&lt;br&gt;&quot;;      </span><br><span class="line">&#125;</span><br><span class="line">function myFunction(value, index, array) &#123;</span><br><span class="line">  return value * 2;             //90,8,18,32,50</span><br><span class="line">&#125;</span><br><span class="line">function myFunction(value) &#123;</span><br><span class="line">  return value &gt; 18;            //45,25</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hoisting：在顶部声明变量！"><a href="#Hoisting：在顶部声明变量！" class="headerlink" title="Hoisting：在顶部声明变量！"></a>Hoisting：在顶部声明变量！</h2><h2 id="Use-Strict-：严格模式"><a href="#Use-Strict-：严格模式" class="headerlink" title="Use Strict ：严格模式"></a>Use Strict ：严格模式</h2><p>无法在不声明变量的情况下使用变量；不允许使用为未来预留的关键词</p>
+<h2 id="Let关键字"><a href="#Let关键字" class="headerlink" title="Let关键字"></a>Let关键字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;</span><br><span class="line">// 此处 x 为 10</span><br><span class="line">&#123; </span><br><span class="line">  let x = 6;</span><br><span class="line">// 此处 x 为 6</span><br><span class="line">&#125;</span><br><span class="line">// 此处 x 为 10</span><br></pre></td></tr></table></figure>
+
+<p>在相同的作用域，或在相同的块中， 不允许用let 重新声明变量，let 变量也不允许被重新声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;            // 允许</span><br><span class="line">let x = 6;             // 不允许</span><br><span class="line">&#123;</span><br><span class="line">  var x = 10;          // 允许</span><br><span class="line">  let x = 6;           // 不允许</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Const关键字"><a href="#Const关键字" class="headerlink" title="Const关键字"></a>Const关键字</h2><p>没有定义常量值。定义了对值的常量引用。<br>因此，不能更改常量原始值，但可以更改常量对象的属性。<br>在<strong>不同的作用域或块</strong>中重新声明 const 是允许的：</p>
+<h2 id="JS调试"><a href="#JS调试" class="headerlink" title="JS调试"></a>JS调试</h2><p>console.log() 可在调试窗口中显示 JavaScript 的值<br><strong>debugger</strong>关键词会停止 JavaScript 的执行，并调用（如果有）调试函数。与在调试器中设置断点的功能是一样的。  </p>
+<p>Safari Develop Menu：</p>
+<ul>
+<li>点击 Safari 菜单，偏好设置，高级</li>
+<li>选中“在菜单栏中启用开发菜单”</li>
+<li>当菜单中出现新选项“开发”时，选择“显示错误控制台”</li>
+</ul>
+<h2 id="JS最佳实践"><a href="#JS最佳实践" class="headerlink" title="JS最佳实践"></a>JS最佳实践</h2><p>请避免使用<strong>全局变量、new、===、eval()</strong></p>
+<h2 id="JS常见错误"><a href="#JS常见错误" class="headerlink" title="JS常见错误"></a>JS常见错误</h2><p>测试对象是否存在：if (typeof myObj !== “undefined” &amp;&amp; myObj !== null)<br>JavaScript <strong>不会</strong>为每个代码块创建新的作用域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">  // 代码块</span><br><span class="line">&#125;</span><br><span class="line">return i;                //10</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS性能提升"><a href="#JS性能提升" class="headerlink" title="JS性能提升"></a>JS性能提升</h2><ul>
+<li>减少循环中的活动</li>
+<li>减少 DOM 访问</li>
+<li>缩减 DOM 规模</li>
+<li>避免不必要的变量</li>
+<li>延迟 JavaScript 加载</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/08/15/hello-world/" rel="next" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS使用"><span class="nav-number">1.</span> <span class="nav-text">JS使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS显示"><span class="nav-number">2.</span> <span class="nav-text">JS显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS运算"><span class="nav-number">3.</span> <span class="nav-text">JS运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS数据类型"><span class="nav-number">4.</span> <span class="nav-text">JS数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined与Null区别：Undefined-与-null-的值相等，但类型不相等："><span class="nav-number">4.1.</span> <span class="nav-text">Undefined与Null区别：Undefined 与 null 的值相等，但类型不相等：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof运算符"><span class="nav-number">4.2.</span> <span class="nav-text">typeof运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS事件"><span class="nav-number">5.</span> <span class="nav-text">JS事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS字符串方法"><span class="nav-number">6.</span> <span class="nav-text">JS字符串方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS数字"><span class="nav-number">7.</span> <span class="nav-text">JS数字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NAN：指示某个数不是合法数。"><span class="nav-number">7.1.</span> <span class="nav-text">NAN：指示某个数不是合法数。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Infinity"><span class="nav-number">7.2.</span> <span class="nav-text">Infinity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toExponential-方法"><span class="nav-number">7.3.</span> <span class="nav-text">toExponential() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toFixed-方法"><span class="nav-number">7.4.</span> <span class="nav-text">toFixed() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toPrecision-方法"><span class="nav-number">7.5.</span> <span class="nav-text">toPrecision() 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-数组方法"><span class="nav-number">8.</span> <span class="nav-text">JavaScript 数组方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组排序"><span class="nav-number">8.1.</span> <span class="nav-text">数组排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比值函数：定义一种排序顺序"><span class="nav-number">8.1.1.</span> <span class="nav-text">比值函数：定义一种排序顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组迭代"><span class="nav-number">8.2.</span> <span class="nav-text">数组迭代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hoisting：在顶部声明变量！"><span class="nav-number">9.</span> <span class="nav-text">Hoisting：在顶部声明变量！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-Strict-：严格模式"><span class="nav-number">10.</span> <span class="nav-text">Use Strict ：严格模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Let关键字"><span class="nav-number">11.</span> <span class="nav-text">Let关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Const关键字"><span class="nav-number">12.</span> <span class="nav-text">Const关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS调试"><span class="nav-number">13.</span> <span class="nav-text">JS调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS最佳实践"><span class="nav-number">14.</span> <span class="nav-text">JS最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS常见错误"><span class="nav-number">15.</span> <span class="nav-text">JS常见错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS性能提升"><span class="nav-number">16.</span> <span class="nav-text">JS性能提升</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
