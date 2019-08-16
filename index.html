@@ -190,6 +190,121 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/08/16/Week1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="emma0s">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harry-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Troublemaker">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/08/16/Week1/" class="post-title-link" itemprop="url">Week1</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-16 10:59:53 / Modified: 11:08:19" itemprop="dateCreated datePublished" datetime="2019-08-16T10:59:53+08:00">2019-08-16</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h1><p><strong>1.初始化 创建新版本库</strong><br>git clone  项目地址  (克隆一份到本地)<br>cd 项目本机地址<br>touch README.md (创建文件)<br>git add ./README.md   (添加资料到本地缓存区、可反复多次使用，添加多个文件)<br>git commit -m”备注 上传什么东西”  （添加所有资料到本地库）<br>git push -u origin master  (将本地库push到服务器上面的msater)  </p>
+<p><strong>others</strong><br>git branch -a  （查看所有本地分支)<br>git checkout -b dev(创建并切换到dev分支，已有该分支就不加-b)<br>git merge self  (将self分支合并到dev上,此步骤需切换至主分支)<br>git push –delete origin 远程分支名（删除远程分支）<br>git status(即gst)   检查本地需要提交的文件  </p>
+<p><strong>备份修改</strong><br>git stash  (把当前工作现场“储藏”起来，等以后恢复现场后继续工作)<br>git stash pop(恢复备份的工作现场）<br>tig  查看本地日志</p>
+<p><strong>查看精简日志</strong>：git log –pretty=oneline</p>
+<p><strong>暂存区概念</strong>：<br><img src="https://upload-images.jianshu.io/upload_images/18109294-12150e866d4037c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>代码库更新</strong><br>git fetch 拉取最新工程<br>git rebase master 与本地分支合并（提交更改前他人抢先提交代码时用）  </p>
+<p><strong>查看修改内容</strong>：git diff</p>
+<p><strong>版本回退</strong>：git reset –hard commit_id。HEAD指向的版本就是当前版本，上一个版本就是HEAD^<br>回退前，用git log可以查看提交历史，以便查找回退版本的ID。<br>重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。  </p>
+<p><strong>pull冲突</strong><br>终端：拉取pull -&gt;  解决冲突  -&gt; 正常提交  </p>
+<p><strong>覆盖修改（本地提交3次通过覆盖远程端提交2次）</strong><br>前两次正常commit、push -&gt; 第三次修改后（git commit –amend 、git push -f origin B)</p>
+<h1 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI/CD"></a>CI/CD</h1><h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><blockquote>
+<p>CI：将应用代码的新更改定期构建、测试并合并到共享存储库中（有需人工操作的按钮）<br>CD：自动将应用发布到生产环境（无按钮）</p>
+</blockquote>
+<h2 id="How"><a href="#How" class="headerlink" title="How"></a>How</h2><p>通过buildkit工具：配置<em>pipeline.yml</em>文件，由auto参数指定操作</p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>缩短产品上市时间，降低实施成本，提高监控能力。传统部署方式可移植性差，对存储能力要求高，代码更新后，甚至需要重启部署。（典型如tomcat、img镜像备份方式）</p>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><p>实际应用时，由于buildkit方式通常需要先测试后部署，若修改较大且有短时响应需求时，可暂时采用CI，先完成测试，时机合适时人工操作开始部署。</p>
+<h1 id="AWS-Cognito"><a href="#AWS-Cognito" class="headerlink" title="AWS Cognito"></a>AWS Cognito</h1><ul>
+<li>userpool：为应用程序提供注册和登录选项的用户目录。</li>
+<li>identity：提供 AWS 凭证以向用户授予对其他 AWS 服务的访问权限。</li>
+</ul>
+<h2 id="Application-1"><a href="#Application-1" class="headerlink" title="Application"></a>Application</h2><p>实际应用时，其他业务线进入网站做某些操作时，要进本线userpool完成用户认证。</p>
+<h2 id="others"><a href="#others" class="headerlink" title="others"></a>others</h2><p>pool ARN ：地区+account+user pool+identity pool<br>Lambda：“一段程序”<br>S3：simple storage service  </p>
+<p><strong>尾递归</strong><br>尾递归 = 尾调用 + 递归</p>
+<ul>
+<li>递归：函数调用自身，称为递归  </li>
+<li>尾调用：函数最后是调用另一个函数</li>
+</ul>
+<p>总结：一个函数在其内部最后一步调用其自身<br>return tailrec(x+1);        //尾递归<br>return tailrec(x+1) + x;    //非尾递归</p>
+<h1 id="OAuth2-OpenID1-0"><a href="#OAuth2-OpenID1-0" class="headerlink" title="OAuth2 + OpenID1.0"></a>OAuth2 + OpenID1.0</h1><p>OAuth角色:  </p>
+<ul>
+<li>Consumer：消费方  </li>
+<li>Service Provider：服务提供者  </li>
+<li>User：用户</li>
+</ul>
+<p>OAuth流程：<br>（A）用户打开客户端以后，客户端要求用户给予授权。<br>（B）用户同意给予客户端授权。<br>（C）客户端使用上一步获得的授权，向认证服务器申请令牌。<br>（D）认证服务器对客户端进行认证以后，确认无误，同意发放令牌。<br>（E）客户端使用令牌，向资源服务器申请获取资源。<br>（F）资源服务器确认令牌无误，同意向客户端开放资源。</p>
+<h1 id="OAuth和OpenID的区别："><a href="#OAuth和OpenID的区别：" class="headerlink" title="OAuth和OpenID的区别："></a>OAuth和OpenID的区别：</h1><p>OAuth关注的是authorization授权，即：“用户能做什么”；<br>而OpenID侧重的是authentication认证，即：“用户是谁”。<br>前者是网站对用户进行认证，让网站知道“你是你所声称的URL的属主”<br>后者其实并不包括认证，只不过“只有认证成功的人才能进行授权”，结果类似于“认证+授权”  </p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/08/16/TypeScript相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -222,7 +337,7 @@
                 
               
 
-              <time title="Created: 2019-08-16 10:43:14 / Modified: 10:53:46" itemprop="dateCreated datePublished" datetime="2019-08-16T10:43:14+08:00">2019-08-16</time>
+              <time title="Created: 2019-08-16 10:43:14 / Modified: 10:55:59" itemprop="dateCreated datePublished" datetime="2019-08-16T10:43:14+08:00">2019-08-16</time>
             </span>
           
             
@@ -291,7 +406,7 @@
 <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>TS 里接口可以描述变量、函数类型和类类型，其它语言只能描述类类型。接口描述变量时可以使用’?’定义某个变量为可选变量。比如对某个对象进行约束时，如果对象的某个属性设置成了可选，则传入的对象可以不包含这个属性。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface LabelledValue &#123;</span><br><span class="line">    size?: Number,</span><br><span class="line">    label: String</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function printLabel(labelObject: LabelledValue) &#123;</span><br><span class="line">    return labelObject.label;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 由于size设置成了可选变量，则传入的对象可以不包含size属性</span><br><span class="line">console.log(printLabel(&#123;</span><br><span class="line">    label: &apos;size 1 object&apos;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 
-<h2 id="接口-描述函数类型"><a href="#接口-描述函数类型" class="headerlink" title="接口-描述函数类型"></a>接口-描述函数类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface SearchFunc &#123;</span><br><span class="line">    (source: string, subString: string): boolean;</span><br><span class="line">&#125;</span><br><span class="line">let mySearch: SearchFunc;</span><br><span class="line">mySearch = function(src: string, sub: string): boolean &#123;</span><br><span class="line">  let result = src.search(sub);</span><br><span class="line">  return result &gt; -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="接口-描述函数类型"><a href="#接口-描述函数类型" class="headerlink" title="接口 - 描述函数类型"></a>接口 - 描述函数类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface SearchFunc &#123;</span><br><span class="line">    (source: string, subString: string): boolean;</span><br><span class="line">&#125;</span><br><span class="line">let mySearch: SearchFunc;</span><br><span class="line">mySearch = function(src: string, sub: string): boolean &#123;</span><br><span class="line">  let result = src.search(sub);</span><br><span class="line">  return result &gt; -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>对于函数类型的类型检查来说，<strong>函数的参数名不需要与接口里定义的名字相匹配。</strong></p>
 <h2 id="接口-描述类类型"><a href="#接口-描述类类型" class="headerlink" title="接口 - 描述类类型"></a>接口 - 描述类类型</h2><p>不同于别的语言只能定义函数，TS里还可以定义属性。如果某个类继承了这个接口，那么这个类必须包含接口里定义的属性和方法。</p>
@@ -300,10 +415,10 @@
 <h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>Decorator是一个函数，用来修饰类、属性、方法和参数。使用 @expression 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function color(value: string) &#123; // 这是一个装饰器工厂</span><br><span class="line">    return function (target) &#123;  //  这是装饰器</span><br><span class="line">        // do something with &quot;target&quot; and &quot;value&quot;...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>类装饰器<br>@func 修饰 类A 等价于 A = func(A)，相当于把旧class转换成了新的class。可以理解为一个加工函数，它接受一个类，加工后返回另一个类。</p>
+<h2 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h2><p>@func 修饰 类A 等价于 A = func(A)，相当于把旧class转换成了新的class。可以理解为一个加工函数，它接受一个类，加工后返回另一个类。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//使用类装饰器(@sealed)的例子，应用在Greeter类：</span><br><span class="line">@sealed</span><br><span class="line">class Greeter &#123;</span><br><span class="line">    greeting: string;</span><br><span class="line">    constructor(message: string) &#123;</span><br><span class="line">        this.greeting = message;</span><br><span class="line">    &#125;</span><br><span class="line">    greet() &#123;</span><br><span class="line">        return &quot;Hello, &quot; + this.greeting;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//定义@sealed装饰器：</span><br><span class="line">function sealed(constructor: Function) &#123;</span><br><span class="line">    Object.seal(constructor);</span><br><span class="line">    Object.seal(constructor.prototype);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="方法装饰器"><a href="#方法装饰器" class="headerlink" title="方法装饰器"></a>方法装饰器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//方法装饰器（@enumerable），应用于Greeter类的方法上：</span><br><span class="line">class Greeter &#123;</span><br><span class="line">    greeting: string;</span><br><span class="line">    constructor(message: string) &#123;</span><br><span class="line">        this.greeting = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @enumerable(false)</span><br><span class="line">    greet() &#123;</span><br><span class="line">        return &quot;Hello, &quot; + this.greeting;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//可以用下面的函数声明来定义@enumerable装饰器：</span><br><span class="line">function enumerable(value: boolean) &#123;</span><br><span class="line">    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">        descriptor.enumerable = value;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法装饰器"><a href="#方法装饰器" class="headerlink" title="方法装饰器"></a>方法装饰器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//方法装饰器（@enumerable），应用于Greeter类的方法上：</span><br><span class="line">class Greeter &#123;</span><br><span class="line">    greeting: string;</span><br><span class="line">    constructor(message: string) &#123;</span><br><span class="line">        this.greeting = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @enumerable(false)</span><br><span class="line">    greet() &#123;</span><br><span class="line">        return &quot;Hello, &quot; + this.greeting;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//可以用下面的函数声明来定义@enumerable装饰器：</span><br><span class="line">function enumerable(value: boolean) &#123;</span><br><span class="line">    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">        descriptor.enumerable = value;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -752,7 +867,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
