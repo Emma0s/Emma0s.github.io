@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Troublemaker">
 <meta property="og:description" content="域名解析过程例如要寻找主机名为ice.cube.com，且DNS客户端为CentOS系统1.主机查找本地的/etc/hosts文件，如果有对应的记录，直接可以访问。如果没有则到下一步2.向本地的DNS服务器发起请求本地的DNS服务查找自己的记录，看能否找到请求的IP地址如果有这个地址，则返回地址给主机，如果不能则到下一步3.发起迭代请求，首先向根服务器发起请求4.根服务器发现无法给出ice.cub">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-16T06:20:25.991Z">
+<meta property="og:updated_time" content="2019-08-16T07:43:16.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TechShare">
 <meta name="twitter:description" content="域名解析过程例如要寻找主机名为ice.cube.com，且DNS客户端为CentOS系统1.主机查找本地的/etc/hosts文件，如果有对应的记录，直接可以访问。如果没有则到下一步2.向本地的DNS服务器发起请求本地的DNS服务查找自己的记录，看能否找到请求的IP地址如果有这个地址，则返回地址给主机，如果不能则到下一步3.发起迭代请求，首先向根服务器发起请求4.根服务器发现无法给出ice.cub">
@@ -226,7 +226,7 @@
                 
               
 
-              <time title="Created: 2019-08-16 14:01:24 / Modified: 14:20:25" itemprop="dateCreated datePublished" datetime="2019-08-16T14:01:24+08:00">2019-08-16</time>
+              <time title="Created: 2019-08-16 14:01:24 / Modified: 15:43:16" itemprop="dateCreated datePublished" datetime="2019-08-16T14:01:24+08:00">2019-08-16</time>
             </span>
           
             
@@ -249,7 +249,7 @@
 <h1 id="git配置多个ssh问题"><a href="#git配置多个ssh问题" class="headerlink" title="git配置多个ssh问题"></a>git配置多个ssh问题</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &apos;yourEmail@xx.com&apos; -f ~/.ssh/gitlab-rsa      生成ssh密钥时区分取名</span><br></pre></td></tr></table></figure>
 
 <p>~/.ssh/config文件下配置不同host使用的不同ssh key</p>
-<h1 id="配置文件参数"><a href="#配置文件参数" class="headerlink" title="配置文件参数"></a>配置文件参数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Host : Host可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和ssh文件</span><br><span class="line"># HostName : 要登录主机的主机名</span><br><span class="line"># User : 登录名</span><br><span class="line"># IdentityFile : 指明上面User对应的identityFile路径</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件参数"><a href="#配置文件参数" class="headerlink" title="配置文件参数"></a>配置文件参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Host : Host可以看作是一个你要识别的模式，对识别的模式，进行配置对应的的主机名和ssh文件</span><br><span class="line"># HostName : 要登录主机的主机名</span><br><span class="line"># User : 登录名</span><br><span class="line"># IdentityFile : 指明上面User对应的identityFile路径</span><br></pre></td></tr></table></figure>
 
 <p>使用命令将其<strong>添加到SSH agent</strong>,命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa</span><br><span class="line">ssh-add ~/.ssh/id_rsa_github</span><br></pre></td></tr></table></figure>
@@ -274,15 +274,7 @@
 <li><p>使用随机密码和对称加密算法对传输的数据加密，传输。</p>
 </li>
 </ol>
-<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p><strong>Unit Test 单元测试</strong><br>在最低的功能/参数上验证程序的准确性,比如测试一个函数的正确性(开发人员做的)</p>
-<p><strong>Integration Test 集成测试</strong><br>假定各个软件单元已通过单元测试，检查各个软件单元接口之间的协同工作是否正确</p>
-<p><strong>Stress test 压力测试</strong><br>测试在一定的负载下系统长时间运行的稳定性，尤其关注大业务量情况下长时间运行系统性能的变化（例如是否反应变慢、是否会内存泄漏导致系统逐渐崩溃、是否能恢复）</p>
-<p><strong>Performance test  性能测试</strong><br>表示在一个给定的基准下，能执行的<strong>最好</strong>情况。</p>
-<p><strong>Smoke Test  冒烟测试</strong><br>“冒烟”–如果测试不通过，则不能进行下一步工作</p>
-<p><strong>Regression Test 回归测试</strong><br>修改了旧代码后，重新进行测试以确认修改没有引入新的错误或导致其他代码产生错误的一种测试方法。</p>
-<p><strong>契约测试</strong><br>也叫消费者驱动测试，Consumer 端提供一个类似“契约”的东西（如json 文件，约定好request和response）交给Provider 端，告诉Provider 有什么需求，然后Provider 根据这份“契约”去实现。</p>
-<p><strong>UI测试</strong><br>测试用户界面的风格是否满足客户要求，文字是否正确，页面是否美观，文字，图片组合是否完美，操作是否友好等等。</p>
-<p><strong>e2e</strong><br>将程序模拟为黑盒，不care内部实现，只care浏览器上的交互效果是不是我要的。</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p><strong>Unit Test 单元测试</strong><br>在最低的功能/参数上验证程序的准确性,比如测试一个函数的正确性(开发人员做的)<br><strong>Integration Test 集成测试</strong><br>假定各个软件单元已通过单元测试，检查各个软件单元接口之间的协同工作是否正确<br><strong>Stress test 压力测试</strong><br>测试在一定的负载下系统长时间运行的稳定性，尤其关注大业务量情况下长时间运行系统性能的变化（例如是否反应变慢、是否会内存泄漏导致系统逐渐崩溃、是否能恢复）<br><strong>Performance test  性能测试</strong><br>表示在一个给定的基准下，能执行的<strong>最好</strong>情况。<br><strong>Smoke Test  冒烟测试</strong><br>“冒烟”–如果测试不通过，则不能进行下一步工作<br><strong>Regression Test 回归测试</strong><br>修改了旧代码后，重新进行测试以确认修改没有引入新的错误或导致其他代码产生错误的一种测试方法。<br><strong>契约测试</strong><br>也叫消费者驱动测试，Consumer 端提供一个类似“契约”的东西（如json 文件，约定好request和response）交给Provider 端，告诉Provider 有什么需求，然后Provider 根据这份“契约”去实现。<br><strong>UI测试</strong><br>测试用户界面的风格是否满足客户要求，文字是否正确，页面是否美观，文字，图片组合是否完美，操作是否友好等<br><strong>E2E</strong><br>将程序模拟为黑盒，不care内部实现，只care浏览器上的交互效果是不是我要的。</p>
 <p>金字塔：压力  性能   冒烟   UI   e2e   契约    集成     回归     单元</p>
 
     </div>
@@ -369,7 +361,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -390,7 +382,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#域名解析过程"><span class="nav-number">1.</span> <span class="nav-text">域名解析过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git配置多个ssh问题"><span class="nav-number">2.</span> <span class="nav-text">git配置多个ssh问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置文件参数"><span class="nav-number">3.</span> <span class="nav-text">配置文件参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端与浏览器交互："><span class="nav-number">4.</span> <span class="nav-text">客户端与浏览器交互：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">5.</span> <span class="nav-text">测试</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#域名解析过程"><span class="nav-number">1.</span> <span class="nav-text">域名解析过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git配置多个ssh问题"><span class="nav-number">2.</span> <span class="nav-text">git配置多个ssh问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件参数"><span class="nav-number">2.1.</span> <span class="nav-text">配置文件参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端与浏览器交互："><span class="nav-number">3.</span> <span class="nav-text">客户端与浏览器交互：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li></ol></div>
             
 
           </div>

@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Troublemaker">
 <meta property="og:description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemo OAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-16T04:28:00.483Z">
+<meta property="og:updated_time" content="2019-08-16T07:32:18.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Week4">
 <meta name="twitter:description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemo OAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服">
@@ -226,7 +226,7 @@
                 
               
 
-              <time title="Created: 2019-08-16 12:13:15 / Modified: 12:28:00" itemprop="dateCreated datePublished" datetime="2019-08-16T12:13:15+08:00">2019-08-16</time>
+              <time title="Created: 2019-08-16 12:13:15 / Modified: 15:32:18" itemprop="dateCreated datePublished" datetime="2019-08-16T12:13:15+08:00">2019-08-16</time>
             </span>
           
             
@@ -253,18 +253,21 @@
 <li>客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见</li>
 <li>认证服务器核对了授权码和重定向URI，确认无误后，向客户端发送访问令牌（access token）和更新令牌（refresh token）等</li>
 </ul>
-<p>第一步：</p>
-<p>客户端申请认证的URI=&gt; <a href="https://facebook.com/dialog/oauth?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=email" target="_blank" rel="noopener">https://facebook.com/dialog/oauth?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=email</a></p>
-<p>response_type：表示授权类型，必选项，此处的值固定为”code”<br>client_id：表示客户端的ID，必选项。<br>redirect_uri：表示重定向URI，可选项<br>scope：表示申请的权限范围，可选项<br>state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值</p>
-<p>第三步：</p>
-<p>服务器将用户导向URI，同时附上授权码 =&gt; HTTP/1.1 302 Found<br>Location: <a href="https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=xyz" target="_blank" rel="noopener">https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=xyz</a></p>
-<p>code：表示授权码，必选项。该码的有效期应该很短，通常设为10分钟，客户端只能使用该码一次，否则会被授权服务器拒绝。该码与客户端ID、重定向URI一一对应。<br>state：如果客户端的请求中包含这个参数，认证服务器的回应也必须一模一样包含这个参数。  </p>
+<p>第一步：客户端申请认证的URI=&gt; </p>
+<blockquote>
+<p><a href="https://facebook.com/dialog/oauth?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=email" target="_blank" rel="noopener">https://facebook.com/dialog/oauth?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=email</a></p>
+</blockquote>
+<p><code>response_type</code>：表示授权类型，必选项，此处的值固定为”code”<br><code>client_id</code>：表示客户端的ID，必选项。<br><code>redirect_uri</code>：表示重定向URI，可选项<br><code>scope</code>：表示申请的权限范围，可选项<br><code>state</code>：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值</p>
+<p>第三步：服务器将用户导向URI，同时附上授权码 =&gt;</p>
+<blockquote>
+<p>HTTP/1.1 302 Found<br>Location: <a href="https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=xyz" target="_blank" rel="noopener">https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&amp;state=xyz</a></p>
+</blockquote>
+<p><code>code</code>：表示授权码，必选项。该码的有效期应该很短，通常设为10分钟，客户端只能使用该码一次，否则会被授权服务器拒绝。该码与客户端ID、重定向URI一一对应。<br><code>state</code>：如果客户端的请求中包含这个参数，认证服务器的回应也必须一模一样包含这个参数。  </p>
 <p>第四步：客户端向认证服务器申请令牌</p>
-<p>grant_type：表示使用的授权模式，必选项，此处的值固定为”authorization_code”。<br>code：表示上一步获得的授权码，必选项。<br>redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。</p>
+<p><code>grant_type</code>：表示使用的授权模式，必选项，此处的值固定为”authorization_code”。<br><code>code</code>：表示上一步获得的授权码，必选项。<br><code>redirect_uri</code>：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /token HTTP/1.1</span><br><span class="line">Host: server.example.com</span><br><span class="line">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">grant_type=authorization_code&amp;code=SplxlOBeZQQYbYS6WxSbIA</span><br><span class="line">&amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb</span><br></pre></td></tr></table></figure>
 
-<p>第五步：认证服务器发送的HTTP回复</p>
-<p>Oauth Server返回token，这个时候，就可以通过token获取用户授权的资源了。<br>access_token：表示访问令牌，必选项。<br>token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。<br>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。<br>refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。<br>scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。  </p>
+<p>第五步：认证服务器发送的HTTP回复<code>Oauth_Server</code>返回token，这个时候，就可以通过token获取用户授权的资源了。<br><code>access_token</code>：表示访问令牌，必选项。<br><code>token_type</code>：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。<br><code>expires_in</code>：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。<br><code>refresh_token</code>：表示更新令牌，用来获取下一次的访问令牌，可选项。<br><code>scope</code>：表示权限范围，如果与客户端申请的范围一致，此项可省略。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">    Content-Type: application/json;charset=UTF-8</span><br><span class="line">    Cache-Control: no-store</span><br><span class="line">    Pragma: no-cache</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;access_token&quot;:&quot;2YotnFZFEjr1zCsicMWpAA&quot;,</span><br><span class="line">      &quot;token_type&quot;:&quot;example&quot;,</span><br><span class="line">      &quot;expires_in&quot;:3600,</span><br><span class="line">      &quot;refresh_token&quot;:&quot;tGzv3JOkF0XG5Qx2TlKWIA&quot;,</span><br><span class="line">      &quot;example_parameter&quot;:&quot;example_value&quot;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="Refresh-token"><a href="#Refresh-token" class="headerlink" title="Refresh token"></a>Refresh token</h1><p>如果用户访问的时候，客户端的访问令牌<code>access_token</code>已经过期，则需要使用更新令牌<code>refresh_token</code>申请一个新的访问令牌。  </p>
@@ -279,8 +282,8 @@
 <li>修订号：当你做了向下兼容的问题修正。  </li>
 </ul>
 </blockquote>
-<p>##先行版本号：发布正式版之前的版本，如：<br>alpha：是内部测试版,一般不向外部发布,会有很多Bug，一般只有测试人员使用。 如：1.0​​.0-alpha<br>beta：也是测试版，这个阶段的版本会一直加入新的功能，在Alpha版之后推出<br>rc：(Release　Candidate) 系统平台上就是发行候选版本。RC版不会再加入新的功能了，主要着重于除错。</p>
-<p>##定义依赖版本号：<br>^ ：表示同一主版本号中，不小于指定版本号的版本号<br><code>^2.2.1</code> ==&gt; <code>2.2.1</code>、<code>2.2.2</code>、<code>2.3.0</code> ,主版本号固定  </p>
+<h2 id="先行版本号：发布正式版之前的版本，如："><a href="#先行版本号：发布正式版之前的版本，如：" class="headerlink" title="先行版本号：发布正式版之前的版本，如："></a>先行版本号：发布正式版之前的版本，如：</h2><p><code>alpha</code>：是内部测试版,一般不向外部发布,会有很多Bug，一般只有测试人员使用。 如：1.0​​.0-alpha<br><code>beta</code>：也是测试版，这个阶段的版本会一直加入新的功能，在Alpha版之后推出<br><code>rc</code>：(Release　Candidate) 系统平台上就是发行候选版本。RC版不会再加入新的功能了，主要着重于除错。</p>
+<h2 id="定义依赖版本号："><a href="#定义依赖版本号：" class="headerlink" title="定义依赖版本号："></a>定义依赖版本号：</h2><p>^ ：表示同一主版本号中，不小于指定版本号的版本号<br><code>^2.2.1</code> ==&gt; <code>2.2.1</code>、<code>2.2.2</code>、<code>2.3.0</code> ,主版本号固定  </p>
 <p>~ ：表示同一主版本号和次版本号中，不小于指定版本号的版本号<br><code>~2.2.1</code> ==&gt; <code>2.2.1、2.2.2</code>，主版本号和次版本号固定  </p>
 <p>&lt;、&gt;、=、&gt;=、&lt;=、-：用来指定一个版本号范围<br> <code>&gt;2.1</code>      <code>1.0.0 - 1.2.0</code>  </p>
 <p>||：表示或  </p>
@@ -370,7 +373,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -391,7 +394,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-practice"><span class="nav-number">1.</span> <span class="nav-text">React practice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OAuth2-再识"><span class="nav-number">2.</span> <span class="nav-text">OAuth2 再识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Refresh-token"><span class="nav-number">3.</span> <span class="nav-text">Refresh token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#semver-语义化版本规范"><span class="nav-number">4.</span> <span class="nav-text">semver 语义化版本规范</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-practice"><span class="nav-number">1.</span> <span class="nav-text">React practice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OAuth2-再识"><span class="nav-number">2.</span> <span class="nav-text">OAuth2 再识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Refresh-token"><span class="nav-number">3.</span> <span class="nav-text">Refresh token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#semver-语义化版本规范"><span class="nav-number">4.</span> <span class="nav-text">semver 语义化版本规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#先行版本号：发布正式版之前的版本，如："><span class="nav-number">4.1.</span> <span class="nav-text">先行版本号：发布正式版之前的版本，如：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义依赖版本号："><span class="nav-number">4.2.</span> <span class="nav-text">定义依赖版本号：</span></a></li></ol></li></ol></div>
             
 
           </div>
