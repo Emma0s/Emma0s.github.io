@@ -62,13 +62,13 @@
 <meta property="og:site_name" content="Troublemaker">
 <meta property="og:description" content="Github连接不上：ping www.baidu.com  //网络连接正常ping github.com     //请求超时    ===&amp;gt;    怀疑DNS无法解析   解决方案：手动查找可用的DNS域名：站长之家查询-选择TTL值最低的DNS域名 打开hosts文件 1sudo subl /etc/hosts  替换github dns域名  React Practicegitla">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/18109294-01446458f69c37e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/18109294-f3a53e1ef991581e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-08-16T09:27:37.527Z">
+<meta property="og:image" content="https://emma0s.github.io/images/searchDNS.png">
+<meta property="og:image" content="https://emma0s.github.io/images/githubDNS.png">
+<meta property="og:updated_time" content="2019-08-19T02:16:00.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Week5">
 <meta name="twitter:description" content="Github连接不上：ping www.baidu.com  //网络连接正常ping github.com     //请求超时    ===&amp;gt;    怀疑DNS无法解析   解决方案：手动查找可用的DNS域名：站长之家查询-选择TTL值最低的DNS域名 打开hosts文件 1sudo subl /etc/hosts  替换github dns域名  React Practicegitla">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/18109294-01446458f69c37e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://emma0s.github.io/images/searchDNS.png">
   <link rel="canonical" href="https://emma0s.github.io/2019/08/16/Week5/">
 
 
@@ -293,11 +293,19 @@
                 
               
 
-              <time title="Created: 2019-08-16 12:28:22 / Modified: 17:27:37" itemprop="dateCreated datePublished" datetime="2019-08-16T12:28:22+08:00">2019-08-16</time>
+              <time title="Created: 2019-08-16 12:28:22" itemprop="dateCreated datePublished" datetime="2019-08-16T12:28:22+08:00">2019-08-16</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-19 10:16:00" itemprop="dateModified" datetime="2019-08-19T10:16:00+08:00">2019-08-19</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -326,12 +334,12 @@
 
       
         <h1 id="Github连接不上："><a href="#Github连接不上：" class="headerlink" title="Github连接不上："></a>Github连接不上：</h1><p>ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a>  //网络连接正常<br>ping github.com     //请求超时    ===&gt;    怀疑DNS无法解析  </p>
-<p>解决方案：<br>手动查找可用的DNS域名：<br><a href="http://tool.chinaz.com/dns?type=1&host=www.github.com&ip=" target="_blank" rel="noopener">站长之家查询-选择TTL值最低的DNS域名</a><br><img src="https://upload-images.jianshu.io/upload_images/18109294-01446458f69c37e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Screen Shot 2019-07-22 at 11.02.38 AM.png"></p>
-<p>打开hosts文件</p>
+<p>解决方案：<br>手动查找可用的DNS域名：<br><a href="http://tool.chinaz.com/dns?type=1&host=www.github.com&ip=" target="_blank" rel="noopener">站长之家查询-选择TTL值最低的DNS域名</a></p>
+<p><img src="/images/searchDNS.png" alt="searchDNS"><br>打开hosts文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo subl /etc/hosts</span><br></pre></td></tr></table></figure>
 
 <p>替换github dns域名</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/18109294-f3a53e1ef991581e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hosts文件.png"></p>
+<p><img src="/images/githubDNS.png" alt="githubDNS"></p>
 <h1 id="React-Practice"><a href="#React-Practice" class="headerlink" title="React Practice"></a>React Practice</h1><p><a href="https://git.thoughtworks.net/wenwei.song/webpackBabel-ReactDemo" target="_blank" rel="noopener">gitlab –&gt; WebpackBebel-ReactDemo</a></p>
 <h2 id="props与state的区别："><a href="#props与state的区别：" class="headerlink" title="props与state的区别："></a>props与state的区别：</h2><p>props是组件间传递的一种方式，props也可以传递state。由于React的数据流是自上而下的，所以是从父组件向子组件进行传递；组件内部的this.props是只读属性！<br><code>state</code>是组件内部的状态(数据),不能够直接修改，必须要通过setState来改变值的状态，从而达到更新组件内部数据的作用。属于state的有：用户输入的搜索词、复选框是否选中的值。<br><code>props</code>是传递给组件的(类似于函数的形参)，而<code>state</code>是在组件内被组件自己管理的(类似于在一个函数内声明的变量)。  </p>
 <p>props和state是经常要结合使用的，<strong>父组件的state可以转化为props来为子组件传值</strong>。</p>
