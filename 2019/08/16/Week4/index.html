@@ -400,12 +400,12 @@
 
 <h1 id="semver-语义化版本规范"><a href="#semver-语义化版本规范" class="headerlink" title="semver 语义化版本规范"></a>semver 语义化版本规范</h1><blockquote>
 <p>版本格式：主版本号.次版本号.修订号，版本号递增规则如下：  </p>
+</blockquote>
 <ul>
 <li>主版本号：当你做了不兼容的 API 修改，  </li>
 <li>次版本号：当你做了向下兼容的功能性新增，  </li>
 <li>修订号：当你做了向下兼容的问题修正。  </li>
 </ul>
-</blockquote>
 <h2 id="先行版本号：发布正式版之前的版本，如："><a href="#先行版本号：发布正式版之前的版本，如：" class="headerlink" title="先行版本号：发布正式版之前的版本，如："></a>先行版本号：发布正式版之前的版本，如：</h2><p><code>alpha</code>：是内部测试版,一般不向外部发布,会有很多Bug，一般只有测试人员使用。 如：1.0​​.0-alpha<br><code>beta</code>：也是测试版，这个阶段的版本会一直加入新的功能，在Alpha版之后推出<br><code>rc</code>：(Release　Candidate) 系统平台上就是发行候选版本。RC版不会再加入新的功能了，主要着重于除错。</p>
 <h2 id="定义依赖版本号："><a href="#定义依赖版本号：" class="headerlink" title="定义依赖版本号："></a>定义依赖版本号：</h2><p>^ ：表示同一主版本号中，不小于指定版本号的版本号<br><code>^2.2.1</code> ==&gt; <code>2.2.1</code>、<code>2.2.2</code>、<code>2.3.0</code> ,主版本号固定  </p>
 <p>~ ：表示同一主版本号和次版本号中，不小于指定版本号的版本号<br><code>~2.2.1</code> ==&gt; <code>2.2.1、2.2.2</code>，主版本号和次版本号固定  </p>
