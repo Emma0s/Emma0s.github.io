@@ -38,9 +38,9 @@
     lazyload: false,
     pangu: false,
     algolia: {
-      appID: 'X1YISKCH07',
-      apiKey: '98835cb091f672e649ce16a1133d3ed0',
-      indexName: 'myBlogSite',
+      appID: '',
+      apiKey: '',
+      indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
@@ -233,37 +233,9 @@
     <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
-      </li>
-    
   </ul>
 
 </nav>
-  <div class="site-search">
-    
-  <div class="popup search-popup">
-  <div class="search-header">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <div class="search-input" id="search-input"></div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-  <div class="algolia-results">
-    <div id="algolia-stats"></div>
-    <div id="algolia-hits"></div>
-    <div id="algolia-pagination" class="algolia-pagination"></div>
-  </div>
-</div>
-
-
-
-  </div>
 </div>
     </header>
 
@@ -668,13 +640,6 @@
 
 
 
-
-
-  
-<link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-<script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-
-<script src="/js/algolia-search.js?v=7.3.0"></script>
 
 
 
