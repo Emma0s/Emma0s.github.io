@@ -322,7 +322,7 @@
       
         <h1 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h1><blockquote>
 <p>执行环境(execution context)定义了变量或者函数有权访问的其他数据，每个执行环境都有一个与之关联的<strong>变量对象(variable object)</strong>，执行环境中定义的变量和函数就保存在这个变量对象中；<br>全局执行环境是最外围的一个执行环境，通常被认为是window对象<br>执行环境和变量对象在<strong>运行函数</strong>时生成<br>执行环境中的<strong>所有代码执行完以后</strong>，执行环境<strong>被销毁</strong>，保存在其中的变量和函数也随之销毁；(全局执行环境到应用退出时销毁)</p>
-</blockquote>
+</blockquote><a id="more"></a>
 <h1 id="声明提前"><a href="#声明提前" class="headerlink" title="声明提前"></a>声明提前</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var scope =&quot;global&quot;;</span><br><span class="line">function f() &#123;</span><br><span class="line">  console.log(scope);        //输出&quot;undefined&quot;</span><br><span class="line">  var scope = &quot;local&quot;;       //变量在此赋初值，但变量本身在函数体内任何地方都是有定义的</span><br><span class="line">  console.log(scope);        //输出&quot;local&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>即将函数内的变量声明“提前”至函数体顶部，同时变量初始化留在原位置。</p>

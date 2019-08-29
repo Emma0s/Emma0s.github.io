@@ -312,7 +312,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h1><p><strong>初始化 创建新版本库</strong><br>git clone  项目地址  (克隆一份到本地)<br>cd 项目本机地址<br>touch README.md (创建文件)<br>git add ./README.md   (添加资料到本地缓存区、可反复多次使用，添加多个文件)<br>git commit -m”备注 上传什么东西”  （添加所有资料到本地库）<br>git push -u origin master  (将本地库push到服务器上面的msater)  </p>
+        <h1 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h1><p><strong>初始化 创建新版本库</strong><br>git clone  项目地址  (克隆一份到本地)<br>cd 项目本机地址<br>touch README.md (创建文件)<br>git add ./README.md   (添加资料到本地缓存区、可反复多次使用，添加多个文件)<br>git commit -m”备注 上传什么东西”  （添加所有资料到本地库）<br>git push -u origin master  (将本地库push到服务器上面的msater)  </p><a id="more"></a>
 <p><strong>others</strong><br>git branch -a  （查看所有本地分支)<br>git checkout -b dev(创建并切换到dev分支，已有该分支就不加-b)<br>git merge self  (将self分支合并到dev上,此步骤需切换至主分支)<br>git push –delete origin 远程分支名（删除远程分支）<br>git status(即gst)   检查本地需要提交的文件  </p>
 <p><strong>备份修改</strong><br>git stash  (把当前工作现场“储藏”起来，等以后恢复现场后继续工作)<br>git stash pop(恢复备份的工作现场）<br>tig  查看本地日志</p>
 <p><strong>查看精简日志</strong>：git log –pretty=oneline</p>

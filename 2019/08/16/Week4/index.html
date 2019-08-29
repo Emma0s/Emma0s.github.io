@@ -56,17 +56,17 @@
   };
 </script>
 
-  <meta name="description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemo OAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服">
+  <meta name="description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemoOAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Week4">
 <meta property="og:url" content="https://emma0s.github.io/2019/08/16/Week4/index.html">
 <meta property="og:site_name" content="Troublemaker">
-<meta property="og:description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemo OAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服">
+<meta property="og:description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemoOAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服务">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-08-16T09:27:30.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Week4">
-<meta name="twitter:description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemo OAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服">
+<meta name="twitter:description" content="React practicegitlab–&amp;gt;WebpackBebel-ReactDemoOAuth2 再识 用户访问客户端，客户端将用户导向认证服务器 用户选择是否给予客户端授权 假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码 客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见 认证服务">
   <link rel="canonical" href="https://emma0s.github.io/2019/08/16/Week4/">
 
 
@@ -310,14 +310,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="React-practice"><a href="#React-practice" class="headerlink" title="React practice"></a>React practice</h1><p><a href="https://git.thoughtworks.net/wenwei.song/webpackBabel-ReactDemo" target="_blank" rel="noopener">gitlab–&gt;WebpackBebel-ReactDemo</a></p>
-<h1 id="OAuth2-再识"><a href="#OAuth2-再识" class="headerlink" title="OAuth2 再识"></a>OAuth2 再识</h1><ul>
+        <h1 id="React-practice"><a href="#React-practice" class="headerlink" title="React practice"></a>React practice</h1><p><a href="https://git.thoughtworks.net/wenwei.song/webpackBabel-ReactDemo" target="_blank" rel="noopener">gitlab–&gt;WebpackBebel-ReactDemo</a></p><h1 id="OAuth2-再识"><a href="#OAuth2-再识" class="headerlink" title="OAuth2 再识"></a>OAuth2 再识</h1><ul>
 <li>用户访问客户端，客户端将用户导向认证服务器</li>
 <li>用户选择是否给予客户端授权</li>
 <li>假设用户给予授权，认证服务器将用户导向客户端事先指定的重定向URI，同时附上一个授权码</li>
 <li>客户端收到授权码，附上早先的重定向URI，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见</li>
 <li>认证服务器核对了授权码和重定向URI，确认无误后，向客户端发送访问令牌（access token）和更新令牌（refresh token）等</li>
-</ul>
+</ul><a id="more"></a>
+
 <p>第一步：客户端申请认证的URI=&gt; </p>
 <blockquote>
 <p><a href="https://facebook.com/dialog/oauth?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=email" target="_blank" rel="noopener">https://facebook.com/dialog/oauth?response_type=code&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=REDIRECT_URI&amp;scope=email</a></p>
