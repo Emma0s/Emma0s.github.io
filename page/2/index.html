@@ -221,6 +221,482 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/08/16/JavaScript进阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="emma0s">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harry-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Troublemaker">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/08/16/JavaScript进阶/" class="post-title-link" itemprop="url">JavaScript进阶</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-16 09:59:31" itemprop="dateCreated datePublished" datetime="2019-08-16T09:59:31+08:00">2019-08-16</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-19 10:18:11" itemprop="dateModified" datetime="2019-08-19T10:18:11+08:00">2019-08-19</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实习/" itemprop="url" rel="index"><span itemprop="name">实习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              
+              <span>7.7k</span>
+            </span>
+          
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              
+              <span>7 mins.</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h1><blockquote>
+<p>执行环境(execution context)定义了变量或者函数有权访问的其他数据，每个执行环境都有一个与之关联的<strong>变量对象(variable object)</strong>，执行环境中定义的变量和函数就保存在这个变量对象中；<br>全局执行环境是最外围的一个执行环境，通常被认为是window对象<br>执行环境和变量对象在<strong>运行函数</strong>时生成<br>执行环境中的<strong>所有代码执行完以后</strong>，执行环境<strong>被销毁</strong>，保存在其中的变量和函数也随之销毁；(全局执行环境到应用退出时销毁)</p>
+</blockquote>
+<h1 id="声明提前"><a href="#声明提前" class="headerlink" title="声明提前"></a>声明提前</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var scope =&quot;global&quot;;</span><br><span class="line">function f() &#123;</span><br><span class="line">  console.log(scope);        //输出&quot;undefined&quot;</span><br><span class="line">  var scope = &quot;local&quot;;       //变量在此赋初值，但变量本身在函数体内任何地方都是有定义的</span><br><span class="line">  console.log(scope);        //输出&quot;local&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>即将函数内的变量声明“提前”至函数体顶部，同时变量初始化留在原位置。</p>
+<h1 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h1><blockquote>
+<p>当代码在一个执行环境中执行时，会创建变量对象的一个作用域链(scope chain)，作用域链用来指定执行环境有权访问的所有变量和函数的访问顺序；<br>作用域链的最前端，始终是当前代码执行环境的变量对象，如果这个环境是函数，则其活动对象就是变量对象<br>作用域链的下一个变量对象，来自外部包含环境，再下一个变量对象，来自下一个外部包含环境，以此类推直到全局执行环境<br>在函数执行过程，根据当前执行环境的作用域链来逐层向外查找变量，并且进行标识符解析</p>
+</blockquote>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><blockquote>
+<p>闭包是指有权访问另一个函数作用域变量的函数，创建闭包的通常方式，是在一个函数内部创建另一个函数，<strong>闭包的本质还是函数</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function A()&#123;</span><br><span class="line">        var funs=[];</span><br><span class="line">        for(var i=0;i&lt;10;i++)&#123;</span><br><span class="line">           funs[i]=function()&#123;</span><br><span class="line">               return i;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return funs; </span><br><span class="line">    &#125;</span><br><span class="line">    var funs = A();//定义funs[0]-funs[9]，10个函数</span><br><span class="line">    funs[0]();     //10</span><br><span class="line">    funs[1]();     //10</span><br><span class="line">    funs[6]();     //10</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码创建了10个闭包，并存储于同一个数组中。这些闭包都是在同一个函数调用中定义的，因此可以共享变量i。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> &lt;script&gt;</span><br><span class="line">    function A()&#123;</span><br><span class="line">        var funs=[];</span><br><span class="line">        for(var i=0;i&lt;10;i++)&#123;</span><br><span class="line">           funs[i] = (function anonymous1(num)&#123;</span><br><span class="line">                return function anonymous2()&#123;</span><br><span class="line">                    return num;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;(i));</span><br><span class="line">        &#125;</span><br><span class="line">        return funs; </span><br><span class="line">    &#125;</span><br><span class="line">    var funs = A();//定义funs[0]-funs[9]，10个函数</span><br><span class="line">    funs[0]();     //0</span><br><span class="line">    funs[1]();     //1</span><br><span class="line">    funs[6]();     //6</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>function anonymous1(num){}(i)，这是一个<strong>立即执行函数</strong>。即( function(){…} )()和( function (){…} () )，<br>立即执行函数把i的值立即传递给num这个局部变量，然后再返回anonymous2，存贮的num值就是每次传入的i值，也就是0-9。</p>
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>特点：<br>（1）对象的状态不受外界影响。有三种状态：pending（初始状态）、fulfilled（操作成功）、rejected（操作失败）<br>（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。状态改变只有两种可能：从 pending 变为 fulfilled 和从 pending 变为 rejected。</p>
+<p>优点：可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，<code>Promise</code>对象提供统一的接口，使得控制异步操作更加容易。<br>缺点：首先，无法取消<code>Promise</code>，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，<code>Promise</code>内部抛出的错误，不会反应到外部。第三，当处于<code>pending</code>状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">        resolve(&apos;hello resolve&apos;);</span><br><span class="line">    &#125;, 500);</span><br><span class="line">&#125;)</span><br><span class="line">.then(val =&gt; &#123;</span><br><span class="line">    console.log(val);// hello resolve</span><br><span class="line">&#125;, err =&gt; &#123;</span><br><span class="line">    console.error(err);// 该条语句不被执行</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>resolve 函数的作用：将 Promise 对象的状态从“未完成（pending）”变为“成功（resolved）”，在异步操作成功时调用，并将异步操作的结果作为参数传递出去。</li>
+<li>reject 函数的作用：将 Promise 对象的状态从“未完成（pending）”变为“失败（rejected）”在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</li>
+<li>then 方法作用：接受两个回调函数作为参数。第一个回调函数是 Promise 对象的状态变为 resolved 时调用，第二个回调函数是 Promise 对象的状态变为 rejected 时调用。第二个函数可选，不一定要提供，也可以将第二个函数作为 catch 方法的参数。</li>
+<li>catch 方法作用：用于指定发生错误时的回调函数。Promise 对象异步操作抛出错误，状态就会变为 rejected，就会调用 catch 方法指定的回调函数处理这个错误。另外，then 方法指定的回调函数，如果运行中抛出错误，也会被 catch 方法捕获。</li>
+</ul>
+<h2 id="Promise执行顺序"><a href="#Promise执行顺序" class="headerlink" title="Promise执行顺序"></a>Promise执行顺序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const promise = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  console.log(&quot;我是第一个执行的&quot;);     //Promise 新建后立即执行</span><br><span class="line">  resolve();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise.then(res =&gt; &#123;</span><br><span class="line">  console.log(&quot;我是第三个执行的&quot;);       //then 方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行,同catch</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(&quot;我是第二个执行的&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Promise链式调用"><a href="#Promise链式调用" class="headerlink" title="Promise链式调用"></a>Promise链式调用</h2><p>then 方法可以返回一个新的 Promise 实例（注意，不是原来那个 Promise 实例）。因此可以采用链式写法，即 then 方法后面再调用另一个 then 方法。<strong>只要一个 Promise 中抛出错误，将执行 catch 方法，then 链终止</strong></p>
+<h3 id="Promise-prototype-finally"><a href="#Promise-prototype-finally" class="headerlink" title="Promise.prototype.finally()"></a>Promise.prototype.finally()</h3><p>finally 方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。本质上是 then 方法的特例，不接受任何参数，不依赖于 Promise 的执行结果</p>
+<h3 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all()"></a>Promise.all()</h3><p>用于将多个 Promise 实例，包装成一个新的 Promise 实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const promise = Promise.all([promise1, promise2, promise3])</span><br></pre></td></tr></table></figure>
+
+<p>Promise.all 方法接受一个数组作为参数，promise、promise2、promise3 都是 Promise 实例，如果不是，就会先调用下面讲到的 Promise.resolve 方法，将参数转为 Promise 实例，再进一步处理。  </p>
+<p>promise 的状态由 promise1、promise2、promise3 决定，分成两种情况:</p>
+<ul>
+<li>三者状态都变成 fulfilled，p 的状态才会变成 fulfilled，此时 promise1、promise2、promise3 的返回值组成一个数组，传递给 p 的回调函数。</li>
+<li>三者中有一个被 rejected，promise 的状态就变成 rejected，此时第一个被 reject 的实例的返回值，会传递给 promise 的回调函数。  </li>
+</ul>
+<p><em>注意，如果作为参数的 Promise 实例，自己定义了catch方法，那么它一旦被rejected，并不会触发Promise.all()的catch方法。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const p1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  resolve(&quot;hello&quot;);</span><br><span class="line">&#125;)</span><br><span class="line">  .then(result =&gt; result)</span><br><span class="line">  .catch(e =&gt; e);</span><br><span class="line"></span><br><span class="line">const p2 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  throw new Error(&quot;报错了&quot;);</span><br><span class="line">&#125;)</span><br><span class="line">  .then(result =&gt; result)</span><br><span class="line">  .catch(e =&gt; e);</span><br><span class="line"></span><br><span class="line">Promise.all([p1, p2])</span><br><span class="line">  .then(result =&gt; console.log(result))</span><br><span class="line">  .catch(e =&gt; console.log(e));</span><br><span class="line">// [&quot;hello&quot;, Error: 报错了]</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，p1 会 resolved，p2 首先会 rejected，但是 p2 有自己的 catch 方法，该方法返回的是一个新的 Promise 实例，p2 指向的实际上是这个实例。该实例执行完 catch 方法后，也会变成 resolved，导致 Promise.all()方法参数里面的两个实例都会 resolved，因此会调用 then 方法指定的回调函数，而不会调用 catch 方法指定的回调函数。</p>
+<p>如果 p2 没有自己的 catch 方法，就会调用 Promise.all()的 catch 方法。</p>
+<h3 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h3><p>同样是将多个 Promise 实例，包装成一个新的 Promise 实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const p = Promise.race([p1, p2, p3])</span><br></pre></td></tr></table></figure>
+
+<p>只要 p1、p2、p3 之中有一个实例率先改变状态，p 的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给 p 的回调函数。</p>
+<h3 id="Promise-resolve"><a href="#Promise-resolve" class="headerlink" title="Promise.resolve()"></a>Promise.resolve()</h3><p>将现有对象转化为 Promise 对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const promise = Promise.resolve(&apos;Hello world&apos;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数是 Promise 实例，该方法不做任何改变。</li>
+<li>参数是一个 thenable 对象，先将对象转为 Promise 对象，然后立即执行 thenable 方法。相当于将 thenable 对象中的 then 方法处理的值作为参数传给 promise then 方法。</li>
+<li>参数不是具有 then 方法的对象，或根本就不是对象，则 Promise.resolve 方法返回一个新的 Promise 对象，状态为 resolved。</li>
+</ul>
+<h3 id="Promise-reject"><a href="#Promise-reject" class="headerlink" title="Promise.reject()"></a>Promise.reject()</h3><p>Promise.reject(reason)方法也会返回一个新的 Promise 实例，该实例的状态为 rejected。</p>
+<h1 id="JS异步"><a href="#JS异步" class="headerlink" title="JS异步"></a>JS异步</h1><p><strong>JS只能是单线程</strong>，但任务可以被设计为同步任务和异步任务。</p>
+<h2 id="EVENT-LOOP（事件循环）"><a href="#EVENT-LOOP（事件循环）" class="headerlink" title="EVENT LOOP（事件循环）"></a>EVENT LOOP（事件循环）</h2><blockquote>
+<ol>
+<li>同步任务直接放入到主线程执行，异步任务（点击事件，定时器，ajax等）挂在后台执行，等待I/O事件完成或行为事件被触发。</li>
+<li>系统后台执行异步任务，如果某个异步任务事件（或者行为事件被触发），则将该任务添加到任务队列的末端，每个任务会对应一个回调函数进行处理。</li>
+<li>执行任务队列中的任务具体是在执行栈中完成的，全部执行完毕后，去读取任务队列中的下一个任务，继续执行，是一个循环的过程，处理一个队列中的任务称之为tick。</li>
+</ol>
+</blockquote>
+<p>更详细的流程图：<img src="/images/eventLoop.png" alt="eventLoop"></p>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><ul>
+<li><p>setInterval() ：按照指定的周期（以毫秒计）来调用函数或计算表达式。方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setInterval(code,millisec,lang)     //lang为可选参数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>setTimeout() ：在指定的毫秒数后调用函数或计算表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(code,millisec,lang)     //lang为可选参数</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>使用 try/catch 进行错误处理。在 Promise 中的 .catch() 分支会进入 catch 语句。</p>
+<h2 id="四种异步实现方案"><a href="#四种异步实现方案" class="headerlink" title="四种异步实现方案"></a>四种异步实现方案</h2><h3 id="1-回调函数"><a href="#1-回调函数" class="headerlink" title="1.回调函数"></a>1.回调函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f1(callback)&#123;</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		//f1的代码</span><br><span class="line">		callback();</span><br><span class="line">	&#125;,1000)</span><br><span class="line">&#125;</span><br><span class="line">f1(f2);</span><br></pre></td></tr></table></figure>
+
+<p>思想：把同步操作变成异步，相当于先执行程序的主要逻辑并将耗时的延迟执行<br>优点：简单明了；<br>缺点：①、耦合严重；②、容易陷入回调地狱</p>
+<h3 id="2-事件监听"><a href="#2-事件监听" class="headerlink" title="2.事件监听"></a>2.事件监听</h3><p>常见的监听函数有：on，bind，listen、addEventListener，observe</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f1.on(&quot;done&quot;.f2);              //f1执行完成后立即触发done事件从而执行f2</span><br><span class="line">function f1()&#123;</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		//f1的代码量</span><br><span class="line">		f1.trigger(&quot;done&quot;);    // 执行完函数体部分 触发done事件</span><br><span class="line">	&#125;,1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优点：避免了直接使用回调的高耦合问题，可以绑定多个回调函数<br>缺点：变成了事件驱动模型，不易看出执行的主流程</p>
+<h3 id="3-发布-订阅模式"><a href="#3-发布-订阅模式" class="headerlink" title="3.发布/订阅模式"></a>3.发布/订阅模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jQuery.subscribe(&quot;done&quot;,f2);           //f2向&quot;信号中心&quot;jQuery订阅&quot;done&quot;信号。</span><br><span class="line">function f1()&#123;</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		//f1的代码</span><br><span class="line">		jQuery.publish(&quot;done&quot;);        //f1执行完成后，向&quot;信号中心&quot;jQuery发布&quot;done&quot;信号，从而引发f2的执行。</span><br><span class="line">	&#125;,1000)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jQuery.unsubscribe(&quot;done&quot;, f2);        //f2完成执行后，可以取消订阅（unsubscribe）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>事件监听模式中，被监听函数f1与监听函数f2直接交流  </li>
+<li>发布/订阅模式中，发布者f1和<strong>消息中心</strong>交流，订阅者f2也和<strong>消息中心</strong>交流</li>
+</ul>
+<h3 id="4-Promises对象"><a href="#4-Promises对象" class="headerlink" title="4.Promises对象"></a>4.Promises对象</h3><p>每一个异步任务返回一个Promise对象，该对象有一个then方法，允许指定回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f1().then(f2).then(f3);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h1><p>Async - 定义异步函数(<code>async function someName(){...}</code>)  </p>
+<ul>
+<li>自动把函数转换为 Promise  </li>
+<li>当调用异步函数时，函数返回值会被 resolve 处理  </li>
+<li>异步函数内部可以使用 <code>await</code>  </li>
+</ul>
+<p>Await - 暂停异步函数的执行 (<code>var result = await someAsyncCall();</code>)  </p>
+<ul>
+<li>当使用在 Promise 前面时，<code>await</code> 等待 Promise 完成，并返回 Promise 的结果  </li>
+<li><em><code>await</code> 只能和 Promise 一起使用，不能和 callback 一起使用</em>  </li>
+<li><code>await</code> 只能用在 <code>async</code> 函数中  </li>
+</ul>
+<h2 id="与Promise关系"><a href="#与Promise关系" class="headerlink" title="与Promise关系"></a>与Promise关系</h2><ul>
+<li>Async/Await 底层依然使用了 Promise。</li>
+<li>多个异步函数同时执行时，需要借助 Promise.all<br>每次遇到 await 关键字时，Promise 都会停下在，一直到运行结束，await 把异步变成了同步。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">async function doIt() &#123;</span><br><span class="line">    console.time(&quot;doIt&quot;);</span><br><span class="line">    const time1 = 300;</span><br><span class="line">    const time2 = await step1(time1);</span><br><span class="line">    const time3 = await step2(time1, time2);</span><br><span class="line">    const result = await step3(time1, time2, time3);</span><br><span class="line">    console.log(`result is $&#123;result&#125;`);</span><br><span class="line">    console.timeEnd(&quot;doIt&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doIt();</span><br><span class="line"></span><br><span class="line">// c:\var\test&gt;node --harmony_async_await .</span><br><span class="line">// step1 with 300</span><br><span class="line">// step2 with 800 = 300 + 500</span><br><span class="line">// step3 with 1800 = 300 + 500 + 1000</span><br><span class="line">// result is 2000</span><br><span class="line">// doIt: 2907.387ms</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/08/15/JavaScript基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="emma0s">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harry-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Troublemaker">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/08/15/JavaScript基础/" class="post-title-link" itemprop="url">JavaScript基础</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-15 15:15:04" itemprop="dateCreated datePublished" datetime="2019-08-15T15:15:04+08:00">2019-08-15</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-16 16:39:40" itemprop="dateModified" datetime="2019-08-16T16:39:40+08:00">2019-08-16</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实习/" itemprop="url" rel="index"><span itemprop="name">实习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              
+              <span>5.2k</span>
+            </span>
+          
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              
+              <span>5 mins.</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h2 id="JS使用"><a href="#JS使用" class="headerlink" title="JS使用"></a>JS使用</h2><p>内部引用：在 HTML 中，JavaScript 代码必须位于 <script> 与 </script> 标签之间。</p>
+<p>外部引用：将<strong>.js</strong>文件通过src属性导入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;/js/myScript1.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS显示"><a href="#JS显示" class="headerlink" title="JS显示"></a>JS显示</h2><blockquote>
+<p>window.alert() 写入警告框<br>document.write() 写入 HTML 输出<br>innerHTML 写入 HTML 元素<br>console.log() 写入浏览器控制台</p>
+</blockquote>
+<h2 id="JS运算"><a href="#JS运算" class="headerlink" title="JS运算"></a>JS运算</h2><p>取幂运算符：x ** y 产生的结果与 Math.pow(x,y) 相同:</p>
+<h2 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h2><h3 id="Undefined与Null区别：Undefined-与-null-的值相等，但类型不相等："><a href="#Undefined与Null区别：Undefined-与-null-的值相等，但类型不相等：" class="headerlink" title="Undefined与Null区别：Undefined 与 null 的值相等，但类型不相等："></a>Undefined与Null区别：Undefined 与 null 的值相等，但类型不相等：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typeof undefined              // undefined</span><br><span class="line">typeof null                   // object</span><br><span class="line">null === undefined            // false</span><br><span class="line">null == undefined             // true</span><br></pre></td></tr></table></figure>
+
+<h3 id="typeof运算符"><a href="#typeof运算符" class="headerlink" title="typeof运算符"></a>typeof运算符</h3><p>对简单数据返回：</p>
+<blockquote>
+<ul>
+<li>string</li>
+<li>number</li>
+<li>boolean</li>
+<li>undefined</li>
+</ul>
+</blockquote>
+<p>对复杂数据返回：</p>
+<blockquote>
+<ul>
+<li>function</li>
+<li>object</li>
+</ul>
+</blockquote>
+<h2 id="JS事件"><a href="#JS事件" class="headerlink" title="JS事件"></a>JS事件</h2><table>
+<thead>
+<tr>
+<th align="center">事件</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">onchange</td>
+<td align="center">HTML 元素已被改变</td>
+</tr>
+<tr>
+<td align="center">onclick</td>
+<td align="center">用户点击了 HTML 元素</td>
+</tr>
+<tr>
+<td align="center">onmouseover</td>
+<td align="center">用户把鼠标移动到 HTML 元素上</td>
+</tr>
+<tr>
+<td align="center">onmouseout</td>
+<td align="center">用户把鼠标移开 HTML 元素</td>
+</tr>
+<tr>
+<td align="center">onkeydown</td>
+<td align="center">用户按下键盘按键</td>
+</tr>
+<tr>
+<td align="center">onload</td>
+<td align="center">浏览器已经完成页面加载</td>
+</tr>
+</tbody></table>
+<h2 id="JS字符串方法"><a href="#JS字符串方法" class="headerlink" title="JS字符串方法"></a>JS字符串方法</h2><p><strong>indexOf()</strong>方法返回字符串中指定文本首次出现的索引（位置）<br><strong>lastIndexOf()</strong>方法返回指定文本在字符串中最后一次出现的索引<br><strong>search()</strong>方法搜索特定值的字符串，并返回匹配的位置<br>区别：search() 方法无法设置第二个开始位置参数。indexOf() 方法无法设置更强大的搜索值（正则表达式）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">slice(start, end)                //提取字符串</span><br><span class="line">substring(start, end)            //无法接受负的索引  </span><br><span class="line">substr(start, length)            //类似于slice()  </span><br><span class="line">var text = &quot;Hello&quot;.concat(&quot; &quot;,&quot;World!&quot;);     //concat() 连接两个或多个字符串：  </span><br><span class="line">text.split(&quot;,&quot;);                 // 用逗号分隔,将字符串转换为数组</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS数字"><a href="#JS数字" class="headerlink" title="JS数字"></a>JS数字</h2><h3 id="NAN：指示某个数不是合法数。"><a href="#NAN：指示某个数不是合法数。" class="headerlink" title="NAN：指示某个数不是合法数。"></a>NAN：指示某个数不是合法数。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x = 100 / &quot;Apple&quot;;  // x 将是 NaN（Not a Number）</span><br><span class="line">var x = 100 / &quot;10&quot;;     // x 将是 10</span><br></pre></td></tr></table></figure>
+
+<p><strong>isNaN()</strong>确定某个值是否是数：</p>
+<h3 id="Infinity"><a href="#Infinity" class="headerlink" title="Infinity"></a>Infinity</h3><p>Infinity （或 -Infinity）是 JavaScript 在计算数时超出最大可能数范围时返回的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while (myNumber != Infinity) &#123;          // 执行直到 Infinity</span><br><span class="line">    myNumber = myNumber * myNumber;</span><br><span class="line">    myNumber.toString(8);               // 返回8进制的myNumber</span><br><span class="line">&#125;</span><br><span class="line">var x =  2 / 0;                         // x 将是 Infinity</span><br></pre></td></tr></table></figure>
+
+<h3 id="toExponential-方法"><a href="#toExponential-方法" class="headerlink" title="toExponential() 方法"></a>toExponential() 方法</h3><p>toExponential() 返回字符串值，包含已被四舍五入并使用指数计数法的数字，参数为小数点后的字符数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x = 9.656;</span><br><span class="line">x.toExponential(2);     // 返回 9.66e+0</span><br><span class="line">x.toExponential(4);     // 返回 9.6560e+0</span><br></pre></td></tr></table></figure>
+
+<h3 id="toFixed-方法"><a href="#toFixed-方法" class="headerlink" title="toFixed() 方法"></a>toFixed() 方法</h3><p>toFixed() 返回字符串值，指定小数的位数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x.toFixed(2);           // 返回 9.66</span><br><span class="line">x.toFixed(4);           // 返回 9.6560</span><br></pre></td></tr></table></figure>
+
+<h3 id="toPrecision-方法"><a href="#toPrecision-方法" class="headerlink" title="toPrecision() 方法"></a>toPrecision() 方法</h3><p>toPrecision() 返回字符串值，包含指定长度的数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.toPrecision(4);       // 返回 9.656</span><br></pre></td></tr></table></figure>
+
+<h2 id="JavaScript-数组方法"><a href="#JavaScript-数组方法" class="headerlink" title="JavaScript 数组方法"></a>JavaScript 数组方法</h2><p><strong>join() 方法</strong>：将所有数组元素结合为一个字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var fruits = [&quot;Banana&quot;, &quot;Orange&quot;,&quot;Apple&quot;, &quot;Mango&quot;];</span><br><span class="line">document.getElementById(&quot;demo&quot;).innerHTML = fruits.join(&quot; * &quot;);     //结果为Banana * Orange * Apple * Mango</span><br></pre></td></tr></table></figure>
+
+<p><strong>shift() 方法</strong>：删除数组的第一个元素（并将所有其他元素“移位”到左侧）<br><strong>unshift() 方法</strong>：将新元素添加到数组的开头<br><strong>splice() 方法</strong>：用于向数组添加新项：第一个参数（2）定义了应添加新元素的位置（拼接），第二个参数（0）定义应删除多少元素，其余参数（“Lemon”，“Kiwi”）定义要添加的新元素。<br>删除元素：第一个参数（0）定义新元素应该被添加（接入）的位置，第二个参数（1）定义应该删除多个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var fruits = [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;];</span><br><span class="line">fruits.splice(2, 0, &quot;Lemon&quot;, &quot;Kiwi&quot;);       //结果为Banana,Orange,Lemon,Kiwi,Apple,Mango</span><br><span class="line">fruits.splice(2, 2, &quot;Lemon&quot;, &quot;Kiwi&quot;);       //结果为Banana,Orange,Apple,Mango</span><br><span class="line">fruits.splice(0, 1);                        // 删除 fruits 中的第一个元素</span><br></pre></td></tr></table></figure>
+
+<p><strong>slice() 方法</strong>：用数组的某个片段切出新数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var fruits = [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Lemon&quot;, &quot;Apple&quot;, &quot;Mango&quot;];</span><br><span class="line">var citrus = fruits.slice(3);               //Apple,Mango</span><br><span class="line">var citrus = fruits.slice(1, 3);            //Orange,Lemon</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h3><p><strong>sort() 函数</strong>按照<strong>字符串</strong>顺序对值进行排序（”Apple” 会排在 “Banana” 之前； “25” 大于 “100”）</p>
+<h4 id="比值函数：定义一种排序顺序"><a href="#比值函数：定义一种排序顺序" class="headerlink" title="比值函数：定义一种排序顺序"></a>比值函数：定义一种排序顺序</h4><p>比较函数应该返回一个负，零或正值，这取决于参数：</p>
+<blockquote>
+<p>function(a, b){return a-b}</p>
+</blockquote>
+<p>当 sort() 函数比较两个值时，会将值发送到比较函数，并根据所返回的值（负、零或正值）对这些值进行排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">points.sort(function(a, b)&#123;return  a - b&#125;);     //function(40,100)，计算 40-100，然后返回 -60（负值）。排序函数将把 40 排序为比 100 更低的值。</span><br></pre></td></tr></table></figure>
+
+<p><strong>Math.max.apply([1, 2, 3])</strong> 等于 <strong>Math.max(1, 2, 3)</strong>，即查找数组中的最高值：<br><strong>Math.min.apply([1, 2, 3])</strong> 等于 <strong>Math.min(1, 2, 3)</strong>，即查找数组中的最高值：</p>
+<h3 id="数组迭代"><a href="#数组迭代" class="headerlink" title="数组迭代"></a>数组迭代</h3><p>Array.<strong>forEach()</strong>：为每个数组元素调用一次函数（回调函数）。<br>Array.<strong>map()</strong>：方法通过对每个数组元素执行函数来创建新数组。（不会对没有值的数组元素执行函数；不会更改原始数组）<br>Array.<strong>filter()</strong>：创建一个包含通过测试的数组元素的新数组。<br>Array.<strong>every()</strong>：检查所有数组值是否通过测试。<br>Array.<strong>some()</strong>：检查某些数组值是否通过了测试。（返回boolean）<br>Array.<strong>find()</strong>：返回通过测试函数的第一个数组元素的值。<br>Array.<strong>findIndex()</strong>：返回通过测试函数的第一个数组元素的索引。<br>——-function myFunction(value, index, array) {}<br>Array.<strong>reduce()</strong>：在每个数组元素上运行函数，以生成（减少它）单个值。<br>Array.<strong>reduceRight()</strong>方法在每个数组元素上运行函数，以生成（减少它）单个值。<br>——-function myFunction(total, value, index, array) {}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var txt = &quot;&quot;;</span><br><span class="line">var numbers = [45, 4, 9, 16, 25];</span><br><span class="line">var numbers1 = numbers.forEach(myFunction);</span><br><span class="line">var numbers2 = numbers.map(myFunction);</span><br><span class="line">var over18 = numbers.filter(myFunction);</span><br><span class="line"></span><br><span class="line">function myFunction(value) &#123;</span><br><span class="line">  txt = txt + value + &quot;&lt;br&gt;&quot;;      </span><br><span class="line">&#125;</span><br><span class="line">function myFunction(value, index, array) &#123;</span><br><span class="line">  return value * 2;             //90,8,18,32,50</span><br><span class="line">&#125;</span><br><span class="line">function myFunction(value) &#123;</span><br><span class="line">  return value &gt; 18;            //45,25</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hoisting：在顶部声明变量！"><a href="#Hoisting：在顶部声明变量！" class="headerlink" title="Hoisting：在顶部声明变量！"></a>Hoisting：在顶部声明变量！</h2><h2 id="Use-Strict-：严格模式"><a href="#Use-Strict-：严格模式" class="headerlink" title="Use Strict ：严格模式"></a>Use Strict ：严格模式</h2><p>无法在不声明变量的情况下使用变量；不允许使用为未来预留的关键词</p>
+<h2 id="Let关键字"><a href="#Let关键字" class="headerlink" title="Let关键字"></a>Let关键字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;</span><br><span class="line">// 此处 x 为 10</span><br><span class="line">&#123; </span><br><span class="line">  let x = 6;</span><br><span class="line">// 此处 x 为 6</span><br><span class="line">&#125;</span><br><span class="line">// 此处 x 为 10</span><br></pre></td></tr></table></figure>
+
+<p>在相同的作用域，或在相同的块中， 不允许用let 重新声明变量，let 变量也不允许被重新声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var x = 10;            // 允许</span><br><span class="line">let x = 6;             // 不允许</span><br><span class="line">&#123;</span><br><span class="line">  var x = 10;          // 允许</span><br><span class="line">  let x = 6;           // 不允许</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Const关键字"><a href="#Const关键字" class="headerlink" title="Const关键字"></a>Const关键字</h2><p>没有定义常量值。定义了对值的常量引用。<br>因此，不能更改常量原始值，但可以更改常量对象的属性。<br>在<strong>不同的作用域或块</strong>中重新声明 const 是允许的：</p>
+<h2 id="JS调试"><a href="#JS调试" class="headerlink" title="JS调试"></a>JS调试</h2><p>console.log() 可在调试窗口中显示 JavaScript 的值<br><strong>debugger</strong>关键词会停止 JavaScript 的执行，并调用（如果有）调试函数。与在调试器中设置断点的功能是一样的。  </p>
+<p>Safari Develop Menu：</p>
+<ul>
+<li>点击 Safari 菜单，偏好设置，高级</li>
+<li>选中“在菜单栏中启用开发菜单”</li>
+<li>当菜单中出现新选项“开发”时，选择“显示错误控制台”</li>
+</ul>
+<h2 id="JS最佳实践"><a href="#JS最佳实践" class="headerlink" title="JS最佳实践"></a>JS最佳实践</h2><p>请避免使用<strong>全局变量、new、===、eval()</strong></p>
+<h2 id="JS常见错误"><a href="#JS常见错误" class="headerlink" title="JS常见错误"></a>JS常见错误</h2><p>测试对象是否存在：if (typeof myObj !== “undefined” &amp;&amp; myObj !== null)<br>JavaScript <strong>不会</strong>为每个代码块创建新的作用域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">  // 代码块</span><br><span class="line">&#125;</span><br><span class="line">return i;                //10</span><br></pre></td></tr></table></figure>
+
+<h2 id="JS性能提升"><a href="#JS性能提升" class="headerlink" title="JS性能提升"></a>JS性能提升</h2><ul>
+<li>减少循环中的活动</li>
+<li>减少 DOM 访问</li>
+<li>缩减 DOM 规模</li>
+<li>避免不必要的变量</li>
+<li>延迟 JavaScript 加载</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/08/14/Spike-github-blog-framework/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -291,7 +767,7 @@
               
                 <span class="post-meta-item-text">Symbols count in article: </span>
               
-              <span>1.7k</span>
+              <span>1.6k</span>
             </span>
           
             <span class="post-meta-item" title="Reading time">
@@ -301,7 +777,7 @@
               
                 <span class="post-meta-item-text">Reading time &asymp;</span>
               
-              <span>2 mins.</span>
+              <span>1 mins.</span>
             </span>
           
 
@@ -385,7 +861,6 @@
 <li>至此，你的个人博客就搭建好啦！！！</li>
 </ul>
 <h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4. 参考文献"></a>4. 参考文献</h1><p><a href="https://www.techiediaries.com/jekyll-hugo-hexo/" target="_blank" rel="noopener">https://www.techiediaries.com/jekyll-hugo-hexo/</a></p>
-<p><strong>本文作者</strong>：emma0s<br><strong>本文地址</strong>： <a href="https://emma0s.github.io/2019/08/14/Spike-github-blog-framework/">https://emma0s.github.io/2019/08/14/Spike-github-blog-framework/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</p>
 
           
         
@@ -446,7 +921,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -518,7 +993,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">34k</span>
+    <span title="Symbols count total">35k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>

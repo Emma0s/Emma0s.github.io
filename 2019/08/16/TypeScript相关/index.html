@@ -287,7 +287,7 @@
               
                 <span class="post-meta-item-text">Symbols count in article: </span>
               
-              <span>4.4k</span>
+              <span>4.3k</span>
             </span>
           
             <span class="post-meta-item" title="Reading time">
@@ -372,9 +372,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//使用类装饰器(@sealed)的例子，应用在Greeter类：</span><br><span class="line">@sealed</span><br><span class="line">class Greeter &#123;</span><br><span class="line">    greeting: string;</span><br><span class="line">    constructor(message: string) &#123;</span><br><span class="line">        this.greeting = message;</span><br><span class="line">    &#125;</span><br><span class="line">    greet() &#123;</span><br><span class="line">        return &quot;Hello, &quot; + this.greeting;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//定义@sealed装饰器：</span><br><span class="line">function sealed(constructor: Function) &#123;</span><br><span class="line">    Object.seal(constructor);</span><br><span class="line">    Object.seal(constructor.prototype);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="方法装饰器"><a href="#方法装饰器" class="headerlink" title="方法装饰器"></a>方法装饰器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//方法装饰器（@enumerable），应用于Greeter类的方法上：</span><br><span class="line">class Greeter &#123;</span><br><span class="line">    greeting: string;</span><br><span class="line">    constructor(message: string) &#123;</span><br><span class="line">        this.greeting = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @enumerable(false)</span><br><span class="line">    greet() &#123;</span><br><span class="line">        return &quot;Hello, &quot; + this.greeting;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//可以用下面的函数声明来定义@enumerable装饰器：</span><br><span class="line">function enumerable(value: boolean) &#123;</span><br><span class="line">    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) &#123;</span><br><span class="line">        descriptor.enumerable = value;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>本文作者</strong>：emma0s<br><strong>本文地址</strong>： <a href="https://emma0s.github.io/2019/08/16/TypeScript相关/">https://emma0s.github.io/2019/08/16/TypeScript相关/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</p>
-
     </div>
 
     
@@ -466,7 +463,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -555,7 +552,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">34k</span>
+    <span title="Symbols count total">35k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>

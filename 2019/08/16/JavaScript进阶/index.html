@@ -297,7 +297,7 @@
               
                 <span class="post-meta-item-text">Symbols count in article: </span>
               
-              <span>7.8k</span>
+              <span>7.7k</span>
             </span>
           
             <span class="post-meta-item" title="Reading time">
@@ -433,9 +433,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">async function doIt() &#123;</span><br><span class="line">    console.time(&quot;doIt&quot;);</span><br><span class="line">    const time1 = 300;</span><br><span class="line">    const time2 = await step1(time1);</span><br><span class="line">    const time3 = await step2(time1, time2);</span><br><span class="line">    const result = await step3(time1, time2, time3);</span><br><span class="line">    console.log(`result is $&#123;result&#125;`);</span><br><span class="line">    console.timeEnd(&quot;doIt&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doIt();</span><br><span class="line"></span><br><span class="line">// c:\var\test&gt;node --harmony_async_await .</span><br><span class="line">// step1 with 300</span><br><span class="line">// step2 with 800 = 300 + 500</span><br><span class="line">// step3 with 1800 = 300 + 500 + 1000</span><br><span class="line">// result is 2000</span><br><span class="line">// doIt: 2907.387ms</span><br></pre></td></tr></table></figure>
 
 
-
-<p><strong>本文作者</strong>：emma0s<br><strong>本文地址</strong>： <a href="https://emma0s.github.io/2019/08/16/JavaScript进阶/">https://emma0s.github.io/2019/08/16/JavaScript进阶/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</p>
-
     </div>
 
     
@@ -527,7 +524,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -616,7 +613,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">34k</span>
+    <span title="Symbols count total">35k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
