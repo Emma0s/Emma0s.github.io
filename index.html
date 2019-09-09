@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Troublemaker">
+<meta property="og:url" content="https://emma0s.github.io/index.html">
+<meta property="og:site_name" content="Troublemaker">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Troublemaker">
+  <link rel="canonical" href="https://emma0s.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Troublemaker</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?743108cc44f90fc4f891ce6317f36922";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Troublemaker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Categories</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+  <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/09/03/githubPages从hexo迁移至Jekyll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="emma0s">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harry-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Troublemaker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/03/githubPages从hexo迁移至Jekyll/" class="post-title-link" itemprop="url">githubPages从hexo迁移至Jekyll</a>
+          
+        </h1>
+
+        <div class="post-meta">
+          
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-03 17:15:45" itemprop="dateCreated datePublished" datetime="2019-09-03T17:15:45+08:00">2019-09-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-09 09:46:29" itemprop="dateModified" datetime="2019-09-09T09:46:29+08:00">2019-09-09</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>生命在于折腾，作者在实习结束后，由于hexo的特性，更换电脑需要重新配置，突发奇想抛掉所有的备份，只带上md文件重新搭建一个基于Jekyll的博客系统，是否能成功呢？</p>
+<h1 id="1-重新配置pc与GitHub的SSH连接"><a href="#1-重新配置pc与GitHub的SSH连接" class="headerlink" title="1. 重新配置pc与GitHub的SSH连接"></a>1. 重新配置pc与GitHub的SSH连接</h1><h1 id="2-安装Jekyll-win10系统下"><a href="#2-安装Jekyll-win10系统下" class="headerlink" title="2. 安装Jekyll(win10系统下)"></a>2. 安装Jekyll(win10系统下)</h1><h2 id="2-2-安装Ruby环境"><a href="#2-2-安装Ruby环境" class="headerlink" title="2.2 安装Ruby环境"></a>2.2 安装Ruby环境</h2><ul>
+<li><p>首先点击下载<a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">Ruby Installer</a>  </p>
+</li>
+<li><p>通过命令行安装Jekyll and bundler gems  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install jekyll bundler</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到你想要作为站点的地址  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 站点地址</span><br><span class="line">jekyll new 站点名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立站点与服务器的连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundle exec jekyll serve</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>若连接成功，则会如下图显示。<a href="./images/Jekyll本地连接成功.png">Jekyll本地连接成功</a></p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/09/03/TWer诞生记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="emma0s">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harry-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Troublemaker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/03/TWer诞生记/" class="post-title-link" itemprop="url">TWer诞生记</a>
+          
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-03 15:50:45" itemprop="dateCreated datePublished" datetime="2019-09-03T15:50:45+08:00">2019-09-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-09 09:21:59" itemprop="dateModified" datetime="2019-09-09T09:21:59+08:00">2019-09-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实习/" itemprop="url" rel="index"><span itemprop="name">实习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>Spoiler warning：The intern Project in TW will be an experience that you can never forget.</strong></p>
+<h1 id="Custom-TWI"><a href="#Custom-TWI" class="headerlink" title="Custom TWI"></a>Custom TWI</h1><p>时间倒退回5月，TW组织实习学员在西安参与3天沉(da)浸(xing)式(hai)培(pa)训，作为骚窝首次实习生项目，很荣幸的迎来据说TWI有史以来最强大的明星讲师团，此处感谢陈锋、袁慎建、刘喆、王健、崔娇、孙晨等讲师的陪伴与教导🙏。<br>在和讲师们吃吃喝喝、搭乐高、玩纸牌的过程中，我眼前似乎浮现培训团队在设计每一环节时不断推翻重演的过程，从用户故事到敏捷实践、扑克牌游戏到BA职能，能充分感受到团队背后的努力与投入。相比传统的填鸭式教育，这3天的培训让我建立了系统的敏捷开发方法论，也让我与其他的实习生小伙伴们建立了珍贵的同期友谊。<br>记得那个与实习生小伙伴们酒店狼人杀的夜晚，作为一个隐蔽坑货属性的新手玩家，在一轮成功指证所有平民队友后，我不禁反复思考：这一切的背后到底是道德的沦丧，还是人性的扭曲？</p>
+<h1 id="踏入TW"><a href="#踏入TW" class="headerlink" title="踏入TW"></a>踏入TW</h1><p>6月下旬入职报道，完成“天龙八部”后开始熟悉组内成员和业务。组内都是经验丰富的开发者，刚开始时，会因为觉得大家都是非常优秀的人，我好像无法与之相比而产生胆怯与伤心。但TW人天生的热情与活力很有力的感染了我，每日集体觅食时间就是最效率的团建，大家交流story、聊聊日常、分享八卦，极大地缓解了我的紧张与局促。<br>同时我的buddy和coach从TWI开始就紧密关注我的学习进度，制定详细而完备的学习计划，从每2天的switch pair，到每周的一份总结。这种多导师的全方位coach，让我能不停地从经验丰富的组员身上学到不同维度的技术实践。<br>这短短两个月的实习，是将自己缺点和优点如实暴露的两个月，在陌生的技术栈和环境中，真的每天都暴风学习很多，身处的这个全栈team，让我能从学生时代老旧的技术块中抽离出来，站在更高的纬度认知敏捷开发和技术实践。<br>在学校的时候，我始终摆脱不了学生的思想，学习也很片面，但在组里实习的这段日子，具体的看到技术使用场景，细细体会组员们的讲解后，深切的感受到了，原来这个技术是用来解决这个问题的啊。现在学习新技术时，我已不仅限于学习其操作和流程，而更愿意了解它的上下文，理清它的优点和适应性。<br>有一句俗语：独行快，众行远。在TW的肩膀上，在最棒的场所最棒的机会中，能与最棒的人一起工作真的很荣幸，也很感谢TW能提供这样一个平台让即将毕业的学生们能一窥真正的职场和技术应用。<br>感谢TW的所有工作人员们，是你们共同构建了一个友好、有料的平台；感谢我的组员们，谢谢你们理解我不安与局促的同时也欣赏我的积极与努力；感谢同期实习小伙伴们对我的帮助与关心，希望大家今后也不要忘记这段经历。  </p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/09/03/Git操作指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="emma0s">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harry-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Troublemaker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/03/Git操作指南/" class="post-title-link" itemprop="url">Git操作指南</a>
+          
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-03 14:50:45" itemprop="dateCreated datePublished" datetime="2019-09-03T14:50:45+08:00">2019-09-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-09 09:21:43" itemprop="dateModified" datetime="2019-09-09T09:21:43+08:00">2019-09-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实习/" itemprop="url" rel="index"><span itemprop="name">实习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="./images/gitCheatSheet.png">gitCheatSheet</a></p>
+<h1 id="寻常操作"><a href="#寻常操作" class="headerlink" title="寻常操作"></a>寻常操作</h1><p>查看此次修改内容：git diff<br>查看提交日志：复杂版 ==&gt; git log; 简化版 ==&gt; git log –pretty=oneline</p>
+<h1 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h1><p>查找历史版本：git reflog.<br>版本回退/前进：git reset –hard 版本ID.<br>HEAD:当前版本. HEAD^:上一个版本</p>
+<h1 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h1><p>丢弃工作区(未add)修改：git checkout – file.<br>丢弃暂存区(未commit)修改：git reset HEAD file<br>丢弃版本库（未push至远程库）修改：版本回退。</p>
+<h1 id="删除文件-文件恢复"><a href="#删除文件-文件恢复" class="headerlink" title="删除文件/文件恢复"></a>删除文件/文件恢复</h1><p>删除文件：git rm file<br>文件恢复：git checkout – file(用版本库里的版本替换工作区的版本,注意：从来没有被添加到版本库就被删除的文件，是无法恢复的！)</p>
+<h1 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h1><p>查看分支：git branch<br>创建+切换分支：git checkout -b name（不加-b纯切换）<br>合并某分支到当前分支：git merge name<br>删除分支：git branch -d name</p>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>将git合并失败的文件手动编辑为希望的内容，再提交.<br>查看分支合并图：git log –graph –pretty=oneline  </p>
+<h2 id="分支管理-1"><a href="#分支管理-1" class="headerlink" title="分支管理"></a>分支管理</h2><p>‘fast forward’模式，合并删除分支后，会丢掉分支信息，看不出做过合并:git merge name.<br>‘–no-ff’模式，merge时会生成新的commit，能看出做过合并:git merge –no-ff -m commit text name</p>
+<h2 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h2><p>修复bug ==&gt; 创建bug分支进行修复，然后合并删除该分支<br>存储工作现场：git stash<br>恢复工作现场：git stash apply（恢复不删除stash）;git stash pop（恢复并删除stash）</p>
+<h2 id="feature分支"><a href="#feature分支" class="headerlink" title="feature分支"></a>feature分支</h2><p>开发新feature,最好新建分支<br>强行丢弃未合并的分支：git branch -D name</p>
+<h2 id="团队开发"><a href="#团队开发" class="headerlink" title="团队开发"></a>团队开发</h2><p>1.git push origin branch-name 推送自己的修改；<br>2.如果推送失败，则远程分支比你的本地更新，用git pull试图合并；<br>3.如果合并有冲突，手动解决冲突，并在本地提交；<br>4.冲突解决后，git push origin branch-name推送就能成功！<br>（注意：如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream-to branch-name origin/branch-name）</p>
+<h2 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h2><ul>
+<li>干净、线性的提交历史，没有不必要的合并提交 ==&gt; git rebase  </li>
+<li>保存项目完整的历史，避免重写公共分支上的commit ==&gt; git merge  </li>
+</ul>
+<p>切到本地分支：git checkout local<br>交互式rebase：git rebase -i HEAD~2 //合并两个<br>普通rebase：git rebase master –&gt; 解决冲突 –&gt; git rebase –continue  </p>
+<h1 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h1><p>新建标签：git tag ‘tagname’, 默认在HEAD新建，也可指定commit id<br>指定标签信息：git tag -a ‘tagname’ -m ‘blablabla…’<br>查看所有标签：git tag<br>推送本地标签：git push origin ‘tagname’<br>推送全部未推送过的本地标签：git push origin –tags<br>删除本地标签：git tag -d ‘tagname’<br>删除远程标签：先本地删，后git push origin :refs/tags/‘tagname’</p>
+<h1 id="自定义Git"><a href="#自定义Git" class="headerlink" title="自定义Git"></a>自定义Git</h1><p>忽略某些文件：.gitignore<br>忽略文件的原则是：</p>
+<ul>
+<li>忽略操作系统自动生成的文件，比如缩略图等；</li>
+<li>忽略编译生成的中间文件、可执行文件等，比如Java编译产生的.class文件；</li>
+<li>忽略你自己的带有敏感信息的配置文件，比如存放口令的配置文件。</li>
+</ul>
+<p>配置命令简写：git config –global alias.co checkout</p>
+<p><strong>仓库Git</strong>配置文件都放在.git/config文件中<br><strong>用户Git</strong>配置文件放在用户主目录下的一个隐藏文件.gitconfig中</p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://emma0s.github.io/2019/09/03/Spike-github-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="emma0s">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/harry-image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Troublemaker">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/03/Spike-github-blog/" class="post-title-link" itemprop="url">Spike-github-blog</a>
+          
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-03 14:42:45" itemprop="dateCreated datePublished" datetime="2019-09-03T14:42:45+08:00">2019-09-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-09 09:21:48" itemprop="dateModified" datetime="2019-09-09T09:21:48+08:00">2019-09-09</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/实习/" itemprop="url" rel="index"><span itemprop="name">实习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="三种方案：Jekyll-VS-Hexo-VS-Hugo"><a href="#三种方案：Jekyll-VS-Hexo-VS-Hugo" class="headerlink" title="三种方案：Jekyll VS Hexo VS Hugo"></a>三种方案：Jekyll VS Hexo VS Hugo</h1><h2 id="Jekyll"><a href="#Jekyll" class="headerlink" title="Jekyll"></a>Jekyll</h2><p><strong>官网: <a href="https://jekyllrb.com" target="_blank" rel="noopener">https://jekyllrb.com</a><br>使用语言: Ruby<br>支持的文件格式: html/md</strong> </p>
+<p>Pros:</p>
+<ul>
+<li>把原文上传github，会自动帮你生成静态网站。</li>
+<li>Github Pages天然支持Jekyll.</li>
+<li>基于GitHub，安全性能较高</li>
+<li>相对hexo而言，可以直接在github网页版上编辑和发布博客，PC间切换和同步非常方便。</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>不支持在titles或者YAML使用变量.</li>
+<li>不内置支持livereload</li>
+<li>不内置支持post pagination</li>
+</ul>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p><strong>官网：<a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a><br>使用语言: NodeJS<br>支持的文件格式: md</strong></p>
+<p>Pros:</p>
+<ul>
+<li>快</li>
+<li>操作简单，命令少，易于记忆</li>
+<li>使用主体为中国社区</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>更换电脑则需重新安装环境</li>
+<li>本地生成 html 再上传GitHub，部署需：one deploy command</li>
+</ul>
+<h2 id="Hugo"><a href="#Hugo" class="headerlink" title="Hugo"></a>Hugo</h2><p><strong>官网：<a href="https://gohugo.io/" target="_blank" rel="noopener">https://gohugo.io/</a><br>使用语言: Golang<br>支持的文件格式: md</strong></p>
+<p>Pros：</p>
+<ul>
+<li>最快</li>
+<li>内置 dynamic API driven</li>
+<li>内置 unlimited content types、i18n、multiple output format</li>
+<li>预置模版</li>
+</ul>
+<p>Cons：</p>
+<ul>
+<li>支持的插件少、扩展性不够</li>
+</ul>
+<h1 id="吸引于Hexo的简洁操作，下面介绍基于hexo搭建博客的流程："><a href="#吸引于Hexo的简洁操作，下面介绍基于hexo搭建博客的流程：" class="headerlink" title="吸引于Hexo的简洁操作，下面介绍基于hexo搭建博客的流程："></a>吸引于Hexo的简洁操作，下面介绍基于hexo搭建博客的流程：</h1><h2 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a>1. 环境准备</h2><ul>
+<li>Node.js (Should be at least nodejs 6.9）</li>
+<li>Git<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2. Hello World"></a>2. Hello World</h2><h3 id="2-1-Github上新建名为username-github-io的仓库并初始化"><a href="#2-1-Github上新建名为username-github-io的仓库并初始化" class="headerlink" title="2.1 Github上新建名为username.github.io的仓库并初始化"></a>2.1 Github上新建名为username.github.io的仓库并初始化</h3><h3 id="2-2-安装Hexo"><a href="#2-2-安装Hexo" class="headerlink" title="2.2 安装Hexo"></a>2.2 安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli   </span><br><span class="line">hexo init  </span><br><span class="line">hexo g  //生成  </span><br><span class="line">hexo s  //启动服务</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="./images/Hexo.png">Hexo</a></p>
+<h3 id="2-3-在github-io仓库中创建index-html"><a href="#2-3-在github-io仓库中创建index-html" class="headerlink" title="2.3 在github.io仓库中创建index.html"></a>2.3 在github.io仓库中创建index.html</h3><p>打开<a href="https://username.github.io/即可访问个人博客啦！" target="_blank" rel="noopener">https://username.github.io/即可访问个人博客啦！</a><br><a href="./images/HelloWorld.png">HelloWorld</a></p>
+<h2 id="3-自定义主题"><a href="#3-自定义主题" class="headerlink" title="3. 自定义主题"></a>3. 自定义主题</h2><p>hexo官网自带主题库：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a><br>或GitHub自行查找主题，此处选用GitHub最火之next</p>
+<h3 id="3-1-下载主题"><a href="#3-1-下载主题" class="headerlink" title="3.1 下载主题"></a>3.1 下载主题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd your-hexo-site</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-启用主题"><a href="#3-2-启用主题" class="headerlink" title="3.2 启用主题"></a>3.2 启用主题</h3><p>将Hexo文件夹下_config.yml 内的 theme 字段修改为next</p>
+<h3 id="3-3-选择Scheme"><a href="#3-3-选择Scheme" class="headerlink" title="3.3 选择Scheme"></a>3.3 选择Scheme</h3><p>目前NexT支持三种Scheme</p>
+<ul>
+<li>Muse – 默认 Scheme，黑白主调，大量留白</li>
+<li>Mist – Muse 的紧凑版本，整洁有序的单栏外观</li>
+<li>Pisces – 双栏 Scheme<br>更改NexT文件夹下_config.yml文件，搜索scheme，将需要启用的 scheme 前面的注释 # 去除即可</li>
+</ul>
+<h3 id="3-4-设置语言"><a href="#3-4-设置语言" class="headerlink" title="3.4 设置语言"></a>3.4 设置语言</h3><p>更改NexT文件夹下_config.yml文件，搜索language，配置为：<code>language: en</code></p>
+<h3 id="3-5-部署"><a href="#3-5-部署" class="headerlink" title="3.5 部署"></a>3.5 部署</h3><ul>
+<li><p>修改_config.yml文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:  </span><br><span class="line">  type: git  </span><br><span class="line">  repo: https://github.com/用户名/用户名.github.io.git  </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 hexo-deployer-git：npm install hexo-deployer-git –save</p>
+</li>
+<li><p>生成站点文件并推送至远程库，执行hexo clean &amp;&amp; hexo deploy</p>
+</li>
+<li><p>启动服务器hexo s</p>
+</li>
+<li><p>至此，你的个人博客就搭建好啦！！！</p>
+</li>
+</ul>
+<p>##4. 参考文献<br><a href="https://www.techiediaries.com/jekyll-hugo-hexo/" target="_blank" rel="noopener">https://www.techiediaries.com/jekyll-hugo-hexo/</a></p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+  </div>
+
+  
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/harry-image.jpg"
+      alt="emma0s">
+  <p class="site-author-name" itemprop="name">emma0s</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+        
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Emma0s" title="GitHub &rarr; https://github.com/Emma0s" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:joy0heaven@sina.cn" title="E-Mail &rarr; mailto:joy0heaven@sina.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">emma0s</span>
+</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
